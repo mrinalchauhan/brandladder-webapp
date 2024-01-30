@@ -1,8 +1,8 @@
+import Navigations from './navigations';
+
 function App() {
   return (
-    <div className="App">
-      brnadladder
-    </div>
+    <Navigations />
   );
 }
 

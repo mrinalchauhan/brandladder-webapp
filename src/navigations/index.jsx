@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthenticateRoutes, UnAuthenticateRoutes } from './navroutes'
 
-const index = () => {
+const Navigations = () => {
 
     const isAuthenticated = true;
     return (
@@ -22,4 +22,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Navigations
