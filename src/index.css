@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --orange-1: #ffeeef;
+  --orange-2: #ffd7d9;
+  --orange-3: #ffb8bb;
+  --orange-4: #ff969b;
+  --orange-5: #ff777d;
+  --orange-6: #ff5960;
+  --orange-7: #d94c52;
+  --orange-8: #b53f44;
+  --orange-9: #913337;
+  --orange-10: #73282b;
+}
