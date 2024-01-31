@@ -1,14 +1,11 @@
 import Navigations from './navigations';
-import TestimonialCard from './components/cards/pricing';
-import Img from './assests/images/logo1.png'
+import Footer from './components/footer'
 
 function App() {
   return (
     <div className="bg-orange-1">
-      {/* <Navigations /> */}
-      <div className="flex">
-        <TestimonialCard />
-      </div>
+      <Navigations />
+      <Footer />
     </div>
   );
 }

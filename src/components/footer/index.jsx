@@ -10,50 +10,93 @@ import Logo1 from '../../assests/images/logo1.png'
 const Footer = () => {
     return (
         <div>
-            <div className='px-6 py-12 bg-orange-4'>
-                <div className="container grid grid-cols-5 mx-auto">
-                    <div className="flex flex-col col-span-2 mx-auto">
-                        <div className="flex">
-                            <img src={Logo1} alt="BrandLadder" />
-                            <h1 className='my-auto text-5xl font-bold' >BrandLadder</h1>
+            <div className="px-5 py-10 mx-auto w-full md:px-24 lg:px-8 bg-orange-4">
+                <div className="grid gap-10 row-gap-6 sm:grid-cols-2 lg:grid-cols-5">
+                    <div className="sm:col-span-2">
+                        <a
+                            href="/"
+                            aria-label="Go home"
+                            title="Company"
+                            className="inline-flex items-center"
+                        >
+                            <img src={Logo1} alt="brandladder" />
+                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                                BRANDLADDER
+                            </span>
+                        </a>
+                        <div className="mt-6 lg:max-w-sm">
+                            <h4 className="text-gray-800 font-semibold text-xl">
+                                Get weekly offers delivered to your inbox directly
+                            </h4>
+                            <small className="mt-4 text-sm text-gray-800">
+                                At BrandLadder, we are more than just a digital media company; we are your partners in achieving a prominent digital presence.
+                            </small>
                         </div>
-                        <h4 className='text-xl font-semibold my-2' >Get weekly offers delivered to your inbox directly</h4>
-                        <p className='text-sm' >
-                            At BrandLadder, we are more than just a digital media company; we are your partners in achieving a prominent digital presence.
+                    </div>
+                    <div>
+                        <span className="text-base font-bold tracking-wide text-gray-900">
+                            Quick Links
+                        </span>
+                        <div className="flex flex-col mt-1 space-x-3">
+                            <ul>
+                                <Link to='/insight' className='my-2'>
+                                    <li>Insight</li>
+                                </Link>
+                                <Link to='/about' className='my-2'>
+                                    <li>About us</li>
+                                </Link>
+                                <Link to='/plans' className='my-2'>
+                                    <li>Our Plans</li>
+                                </Link>
+                                <Link to='/' className='my-2'>
+                                    <li>Gallery</li>
+                                </Link>
+                                <Link to='/' className='my-2'>
+                                    <li>Sign in</li>
+                                </Link>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="space-y-2 text-sm sm:col-span-2 ml-10">
+                        <p className="text-base font-bold tracking-wide text-gray-900">
+                            Made with love in India
                         </p>
-                    </div>
-                    <div className="flex flex-col  col-span-1 mx-auto">
-                        <h3 className='text-xl font-semibold' >Quick Links</h3>
-                        <ul>
-                            <li>
-                                <Link to='/insight' >
-                                    Insight
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='/about'>
-                                    About us
-                                </Link>
-                            </li>
-                            <li>Gallery</li>
-                            <li>Sign in</li>
-                        </ul>
-                    </div>
-                    <div className="flex flex-col  col-span-2 mx-auto">
-                        <h3 className='text-xl font-semibold' >Made with love in India</h3>
-                        <ul>
-                            <li className='flex' >
-                                <AiTwotoneMail className='my-auto mx-2' /> contact@brandladder.co.in
-                            </li>
-                            <li className='flex' >
+                        <div className="flex">
+                            <a
+                                href="+91 9391523930"
+                                aria-label="Our phone"
+                                title="Our phone"
+                                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800 flex"
+                            >
                                 <FiPhone className='my-auto mx-2' /> +91 9391523930
-                            </li>
-                            <li className='flex' >
-                                < IoLocationOutline className='my-auto mx-2' />
-                                High line Complex, <br /> Banjarahills Hyderabad, 500034, Telangana, <br /> INDIA
-                            </li>
-                        </ul>
+                            </a>
+                        </div>
+                        <div className="flex">
+                            <a
+                                href="mailto:info@lorem.mail"
+                                aria-label="Our email"
+                                title="Our email"
+                                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800 flex"
+                            >
+                                <AiTwotoneMail className='my-auto mx-2' /> info@brandladder.co.in
+                            </a>
+                        </div>
+                        <div className="flex">
+                            <a
+                                href="https://www.google.com/maps"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Our address"
+                                title="Our address"
+                                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800 flex"
+                            >
+                                <IoLocationOutline className='my-auto mx-2' /> High line Complex,<br />
+                                Banjarahills Hyderabad, 500034, Telangana, <br />
+                                INDIA
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div className='bg-orange-3 py-3 mx-auto text-center'>
