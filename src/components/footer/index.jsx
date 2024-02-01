@@ -4,12 +4,33 @@ import { Link } from 'react-router-dom';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "react-icons/fa";
 
 import Logo1 from '../../assests/images/logo1.png'
 
 const Footer = () => {
     return (
-        <div>
+        <div className='mt-3' >
+            <div className='flex my-2 justify-center lg:justify-end' >
+                <small className='my-auto font-medium text-lg text-orange-8 hidden lg:block' >Connect With Our Social Apps</small>
+                <div className="flex mx-3">
+                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
+                        <FaLinkedinIn />
+                    </div>
+                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
+                        <FaInstagram />
+                    </div>
+                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
+                        <FaWhatsapp />
+                    </div>
+                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
+                        <FaFacebook />
+                    </div>
+                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
+                        <FaTwitter />
+                    </div>
+                </div>
+            </div>
             <div className="px-5 py-10 mx-auto w-full md:px-24 lg:px-8 bg-orange-4">
                 <div className="grid gap-10 row-gap-6 sm:grid-cols-2 lg:grid-cols-5">
                     <div className="sm:col-span-2">
