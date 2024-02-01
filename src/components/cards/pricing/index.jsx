@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { GoDotFill } from "react-icons/go";
 import { FaRegDotCircle } from "react-icons/fa";
 
-export const PricingCard = ({ palnType, totalPrice, monthlyPrice, featureList, prime }) => {
+export const PricingCard = ({ palnType, price, featureList, prime = false }) => {
 
     return (
         <div className="mx-auto">
@@ -14,7 +15,7 @@ export const PricingCard = ({ palnType, totalPrice, monthlyPrice, featureList, p
                         {palnType}
                     </h2>
                     <p className="my-2">
-                        <strong className="text-sm font-bold  sm:text-4xl"> {totalPrice}$ </strong>
+                        <strong className="text-sm font-bold  sm:text-4xl"> {price}$ </strong>
                         <span className="text-sm font-medium text-gray-700">/month</span>
                     </p>
 
@@ -51,5 +52,12 @@ export const PricingCard = ({ palnType, totalPrice, monthlyPrice, featureList, p
         </div>
     );
 };
+
+PricingCard.propTypes = {
+    palnType: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    featureList: PropTypes.array.isRequired,
+    prime: PropTypes.string.isRequired,
+}
 
 export default PricingCard
