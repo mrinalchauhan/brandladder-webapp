@@ -9,26 +9,44 @@ import { FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "re
 import Logo1 from '../../assests/images/logo1.png'
 
 const Footer = () => {
+
+    const socials = [
+        {
+            link: '/',
+            icon: <FaLinkedinIn />,
+        },
+        {
+            link: '/',
+            icon: <FaInstagram />,
+        },
+        {
+            link: '/',
+            icon: <FaWhatsapp />,
+        },
+        {
+            link: '/',
+            icon: <FaFacebook />,
+        },
+    ]
+
     return (
         <div className='mt-3' >
             <div className='flex my-2 justify-center lg:justify-end' >
                 <small className='my-auto font-medium text-lg text-orange-8 hidden lg:block' >Connect With Our Social Apps</small>
                 <div className="flex mx-3">
-                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
-                        <FaLinkedinIn />
-                    </div>
-                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
-                        <FaInstagram />
-                    </div>
-                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
-                        <FaWhatsapp />
-                    </div>
-                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
-                        <FaFacebook />
-                    </div>
-                    <div className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1' >
-                        <FaTwitter />
-                    </div>
+                    {
+                        socials.map((data, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className='border-2 border-orange-3 border-solid rounded-full p-1 text-orange-5 mx-1 shadow-2xl transition duration-500 ease-in-out hover:text-orange-1 hover:bg-orange-5' >
+                                    <Link to={data.link}>
+                                        {data.icon}
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
             <div className="px-5 py-10 mx-auto w-full md:px-24 lg:px-8 bg-orange-4">

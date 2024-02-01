@@ -1,0 +1,58 @@
+import React from 'react';
+import PropType from 'prop-types'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import TestemonialCard from '../../cards/testimonial/index'
+
+const TestemonialCarousel = ({ testemonialList }) => {
+    return (
+        <Swiper
+            slidesPerView={1}
+            spaceBetween={15}
+            pagination={{
+                clickable: true,
+            }}
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+        >
+            {
+                testemonialList.map((data, index) => {
+                    return (
+                        <SwiperSlide key={index} >
+                            <TestemonialCard
+                                image={data.image}
+                                name={data.name}
+                                designation={data.designation}
+                                content={data.content}
+                            />
+                        </SwiperSlide>
+                    )
+                })
+            }
+        </Swiper>
+    )
+}
+
+TestemonialCarousel.PropType = {
+    testemonialList: PropType.array.isRequired,
+}
+
+export default TestemonialCarousel
