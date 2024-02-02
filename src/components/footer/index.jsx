@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
-import { FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 import Logo1 from '../../assests/images/logo1.png'
 

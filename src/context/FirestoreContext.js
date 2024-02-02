@@ -1,16 +1,16 @@
 // firestore.js
 import { createContext, useContext } from "react";
-import { db } from "../config/firebaseConfig";
-import {
-    collection,
-    getDocs,
-    addDoc,
-    updateDoc,
-    deleteDoc,
-    doc,
-    getDoc,
-    setDoc
-} from "firebase/firestore";
+// import { db } from "../config/firebaseConfig";
+// import {
+//     collection,
+//     getDocs,
+//     addDoc,
+//     updateDoc,
+//     deleteDoc,
+//     doc,
+//     getDoc,
+//     setDoc
+// } from "firebase/firestore";
 
 const FirestoreContext = createContext();
 

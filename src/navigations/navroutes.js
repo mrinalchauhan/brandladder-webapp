@@ -1,5 +1,6 @@
 import Home from '../pages';
 import Plans from '../pages/plans';
+import Services from '../pages/services'
 import Insight from '../pages/Insight';
 import About from '../pages/about';
 import Contact from '../pages/contact';
@@ -19,6 +20,10 @@ export const UnAuthenticateRoutes = [
     {
         path: '/insight',
         element: <Insight />,
+    },
+    {
+        path: '/services',
+        element: <Services />,
     },
     {
         path: '/aboutus',

@@ -17,8 +17,13 @@ module.exports = {
         "orange-9": "var(--orange-9)",
         "orange-10": "var(--orange-10)",
       },
+      fontFamily: {
+        poppins: ['"Poppins"', "sans-serif"],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require("rippleui")
+  ],
 }
 
