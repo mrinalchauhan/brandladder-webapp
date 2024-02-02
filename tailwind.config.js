@@ -16,6 +16,7 @@ module.exports = {
         "orange-8": "var(--orange-8)",
         "orange-9": "var(--orange-9)",
         "orange-10": "var(--orange-10)",
+        "gray-1": "var(--gray-1)",
       },
       fontFamily: {
         poppins: ['"Poppins"', "sans-serif"],

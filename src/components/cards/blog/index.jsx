@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const TestimonialCard = ({ image, name, designation, content }) => {
+const TestimonialCard = ({ image, name, designation, content, link }) => {
     return (
         <div className='container p-4 shadow-lg rounded-3xl transition duration-500 ease-in-out hover:bg-orange-2 hover:shadow-xl'>
             <div className="flex justify-start space-x-4">
@@ -15,6 +16,11 @@ const TestimonialCard = ({ image, name, designation, content }) => {
             </div>
             <small className='p-4'>
                 {content}
+                <span>
+                    <Link to={link} >
+                        Read More ..
+                    </Link>
+                </span>
             </small>
         </div>
     );

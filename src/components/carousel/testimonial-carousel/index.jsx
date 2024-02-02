@@ -1,7 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+// import { Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -30,8 +30,8 @@ const TestemonialCarousel = ({ testemonialList }) => {
                     spaceBetween: 50,
                 },
             }}
-            modules={[Pagination]}
-            className="mySwiper"
+            // modules={[Pagination]}
+            className="mySwiper cursor-grab"
         >
             {
                 testemonialList.map((data, index) => {

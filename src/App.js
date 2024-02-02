@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="bg-orange-1 text-orange-9">
       <Navbar />
-      <div className="my-15">
+      <div className="py-15 px-4 mx-auto container">
         <Navigations />
       </div>
       <Footer />
