@@ -3,27 +3,7 @@ import React from 'react'
 import PageHeader from '../../headers/page-header'
 import PricingCard from '../../cards/pricing'
 
-const Pricing = () => {
-
-    const featureList1 = [
-        "Daily captivating designs",
-        "4 reels per month",
-        "SMM",
-        "Content calandar",
-        "Detail digital marketing plan",
-        "One AI video"
-    ]
-
-    const featureList2 = [
-        "Daily captivating designs",
-        "4 reels per month",
-        "SMM",
-        "Content calandar",
-        "Detail digital marketing plan",
-        "One AI video",
-        "Detail digital marketing plan",
-        "One AI video",
-    ]
+const Pricing = ({ featureList1, featureList2, featureList3 }) => {
 
     return (
         <div className='bg-orange-2 mb-10 py-10 lg:px-10 px-2 w-full'>
@@ -68,7 +48,7 @@ const Pricing = () => {
                         palnType='Silver plan'
                         totalPrice='12.99'
                         monthlyPrice='17'
-                        featureList={featureList1}
+                        featureList={featureList3}
                     />
                 </div>
             </div>
