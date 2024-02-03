@@ -9,8 +9,8 @@ import Pricing from '../components/sections/pricing';
 import HomeAboutSection from '../components/sections/about/home';
 
 import Img from '../assests/images/logo1.png';
-import GalaryImg1 from '../assests/images/feature-img/gallery-bg.png'
-import GalaryImg2 from '../assests/images/feature-img/gallery-small.png'
+// import GalaryImg1 from '../assests/images/feature-img/gallery-bg.png'
+// import GalaryImg2 from '../assests/images/feature-img/gallery-small.png'
 
 const Home = () => {
 
