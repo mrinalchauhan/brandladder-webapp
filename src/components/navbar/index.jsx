@@ -106,7 +106,7 @@ const Navbar = () => {
                             <PiArrowLineLeftBold />
                         </label>
                     </div>
-                    <div className="w-100 flex flex-col justify-center align-middle h-4/5">
+                    <div className="w-100 flex flex-col justify-center align-middle overflow-scroll h-4/5">
                         {
                             navLinks.map((data, index) => {
                                 return (
