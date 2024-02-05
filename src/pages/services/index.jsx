@@ -66,14 +66,14 @@ const Services = () => {
                     <CiSearch className='my-auto w-20 hidden md:block' />
                 </div>
             </section>
-            <div className="my-6">
-                <ServiceSection serviceList={serviceList} sectionTitle='Tech Seervice' />
+            <div className="my-10">
+                <ServiceSection serviceList={serviceList} sectionTitle='Technical' />
             </div>
-            <div className="my-6">
-                <ServiceSection serviceList={serviceList} sectionTitle='Digital Marketing Seervice' />
+            <div className="my-10">
+                <ServiceSection serviceList={serviceList} sectionTitle='Digital Marketing' />
             </div>
-            <div className="my-6">
-                <ServiceSection serviceList={serviceList} sectionTitle='CA & Registration Seervice' />
+            <div className="my-10">
+                <ServiceSection serviceList={serviceList} sectionTitle='CA & Registration' />
             </div>
         </div>
     )

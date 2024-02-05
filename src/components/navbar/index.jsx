@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { MdOutlineContacts } from "react-icons/md";
@@ -11,6 +11,23 @@ import { GrServices, GrArticle } from "react-icons/gr";
 import FullLogo from '../../assests/images/full-logo.png'
 
 const Navbar = () => {
+    const [isSticky, setSticky] = useState(false);
+
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        setSticky(scrollPosition > 200);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const navbarClass = isSticky ?
+        'navbar navbar-sticky z-50 bg-orange-2 transition-opacity duration-300 ease-in-out' :
+        'navbar z-50 bg-orange-2 transition-opacity duration-300 ease-in-out';
 
     const navLinks = [
         {
@@ -19,7 +36,7 @@ const Navbar = () => {
             icon: <FaHome />,
         },
         {
-            path: '/plan',
+            path: '/plans',
             title: 'Pricing',
             icon: <IoPricetagsOutline />,
         },
@@ -46,7 +63,7 @@ const Navbar = () => {
     ]
 
     return (
-        <div className='navbar sticky z-50 bg-orange-2'>
+        <div className={navbarClass}>
             <div className="navbar-start">
                 <Link to="/" className="navbar-item max-w-40">
                     <img src={FullLogo} alt="Brnadladder" />
@@ -60,7 +77,7 @@ const Navbar = () => {
                             <Link
                                 key={index}
                                 to={data.path}
-                                className="navbar-item text-black font-medium active:text-orange-7  focus:text-orange-7 flex">
+                                className="navbar-item text-black font-medium active:text-orange-7  focus:text-orange-7 flex ">
                                 {data.icon && React.cloneElement(data.icon, { className: 'my-auto mx-1' })}
                                 {data.title}
                             </Link>

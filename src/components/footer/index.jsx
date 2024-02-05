@@ -6,7 +6,7 @@ import { FiPhone } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
-import Logo1 from '../../assests/images/logo1.png'
+import Logo1 from '../../assests/images/full-logo.png'
 
 const Footer = () => {
 
@@ -59,9 +59,6 @@ const Footer = () => {
                             className="inline-flex items-center"
                         >
                             <img src={Logo1} alt="brandladder" />
-                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                BRANDLADDER
-                            </span>
                         </a>
                         <div className="mt-6 lg:max-w-sm">
                             <h4 className="text-gray-800 font-semibold text-xl">
