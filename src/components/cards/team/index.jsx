@@ -13,7 +13,7 @@ const TeamCard = ({ navlink }) => {
         <div className='card p-6 bg-inherit'>
             <div className="card-content">
                 <div className="grid grid-cols-7 gap-0">
-                    <div className="w-56 h-72 col-span-6 border-2 overflow-hidden">
+                    <div className="w-56 h-72 cltw1ol-span-6 border-2 overflow-hidden">
                         <img src={FounderImg} alt="" className='h-full w-full ' />
                     </div>
                     <div className="col-span-1 flex flex-row">
