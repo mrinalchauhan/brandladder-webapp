@@ -26,11 +26,11 @@ export const UnAuthenticateRoutes = [
         element: <Services />,
     },
     {
-        path: '/aboutus',
+        path: '/about',
         element: <About />,
     },
     {
-        path: '/contactus',
+        path: '/contact',
         element: <Contact />,
     },
 ]
