@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import useSmoothScroll from '../../hooks/general/useSmoothScroll';
 
 import ServiceSection from '../../components/sections/service'
 import TrendingCarousel from '../../components/carousel/trending-carousel'
 import { CiSearch } from "react-icons/ci";
-import Img from '../../assests/images/logo1.png'
+
 const Services = () => {
+    useSmoothScroll();
+
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleInputChange = (event) => {

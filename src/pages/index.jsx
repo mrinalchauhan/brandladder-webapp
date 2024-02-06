@@ -1,5 +1,4 @@
 import React from 'react';
-
 import useSmoothScroll from '../hooks/general/useSmoothScroll';
 
 import PageHeader from '../components/headers/page-header'
@@ -91,15 +90,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* <section className='py-6'>
-                <img src={GalaryImg1} alt="" className='w-8/12 mx-auto z-10 mt-40' />
-                <img src={GalaryImg2} alt="" className='w-4/12 z-20 relative bottom-3/4' />
-                <img src={GalaryImg2} alt="" className='w-4/12 z-10' />
-            </section> */}
-
-            {/* testimonial end  */}
-
-            {/* blog section start */}
             <section className='my-10 px-10'>
                 <PageHeader
                     title='Blogs'
@@ -126,7 +116,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* blog section end */}
         </div >
     )
 }

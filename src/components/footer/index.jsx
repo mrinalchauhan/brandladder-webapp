@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Wave from 'react-wavify';
 
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
@@ -30,7 +31,7 @@ const Footer = () => {
     ]
 
     return (
-        <div className='mt-3' >
+        <footer className='mt-3' >
             <div className='flex my-2 justify-center lg:justify-end' >
                 <small className='my-auto font-medium text-lg text-orange-8 hidden lg:block' >Connect With Our Social Apps</small>
                 <div className="flex mx-3">
@@ -138,7 +139,7 @@ const Footer = () => {
             <div className='bg-orange-3 py-3 mx-auto text-center'>
                 <h4 className='font-semibold text-sm' >© 2023 Brandladder™. All Rights Reserved.</h4>
             </div>
-        </div>
+        </footer>
     )
 }
 
