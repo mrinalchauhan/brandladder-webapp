@@ -1,92 +1,117 @@
 import React from 'react';
+import PropType from 'prop-types'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-import ServiceCard from '../../cards/service';
+import ServiceCard from '../../cards/service'
 import Img from '../../../assests/images/logo1.png'
 
-export default function TrendingCarousel() {
+const TestemonialCarousel = () => {
+
+    const testemonialList = [
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+        {
+            image: Img,
+            title: 'Technical Services',
+            desc: 'we make a perfect premium business card from here at a cheap rate',
+            pricing: '17',
+            link: '/services',
+            trending: true,
+        },
+    ]
+
     return (
-        <>
-            <Swiper
-                slidesPerView={4}
-                centeredSlides={false}
-                spaceBetween={15}
-                breakpoints={{
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 4,
-                        spaceBetween: 50,
-                    },
-                }}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: true,
-                }}
-                loopedSlides={true}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
-            >
-                <SwiperSlide>
-                    <ServiceCard
-                        image={Img}
-                        title='lorem'
-                        desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut maiores pariatur error aliquam? Illo, consequuntur delectus
-                        '
-                        pricing='17'
-                        link='/'
-                        trending={true}
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard
-                        image={Img}
-                        title='lorem'
-                        desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut maiores pariatur error aliquam? Illo, consequuntur delectus'
-                        pricing='17'
-                        link='/'
-                        trending={true}
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ServiceCard image={Img} title='lorem' desc='lorem' pricing='17' link='/' trending={true} />
-                </SwiperSlide>
-            </Swiper >
-        </>
-    );
+        <Swiper
+            slidesPerView={1}
+            spaceBetween={15}
+            pagination={{
+                clickable: true,
+            }}
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                },
+            }}
+            autoplay={{
+                delay: 2500,
+                disableOnInteraction: true,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper cursor-grab"
+        >
+            {
+                testemonialList.map((data, index) => {
+                    return (
+                        <SwiperSlide key={index} >
+                            <ServiceCard
+                                image={data.image}
+                                title={data.title}
+                                desc={data.desc}
+                                pricing={data.pricing}
+                                link={data.link}
+                                trending={data.trending}
+                            />
+                        </SwiperSlide>
+                    )
+                })
+            }
+        </Swiper>
+    )
 }
+
+TestemonialCarousel.PropType = {
+    testemonialList: PropType.array.isRequired,
+}
+
+export default TestemonialCarousel

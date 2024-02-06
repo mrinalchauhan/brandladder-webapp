@@ -1,4 +1,5 @@
 import React from 'react'
+import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
 import { IoMailOutline } from "react-icons/io5";
 import { BiPhoneCall } from "react-icons/bi";
@@ -6,6 +7,8 @@ import { BiPhoneCall } from "react-icons/bi";
 import ContactIMg from '../../assests/images/feature-img/contact.jpg'
 
 const Contact = () => {
+    useSmoothScroll();
+
     return (
         <section className='bg-orange-2 md:p-10 p-0'>
             <h2 className='my-4 md:block hidden'>..... Get In Touch</h2>

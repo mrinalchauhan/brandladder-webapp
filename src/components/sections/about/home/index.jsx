@@ -47,7 +47,7 @@ const HomeAboutSection = () => {
                     <img
                         src={AboutImg1}
                         alt="BandLadder"
-                        className='max-h-80 mx-auto'
+                        className='max-h-80 mx-auto '
                     />
                 </animated.div>
             </div>

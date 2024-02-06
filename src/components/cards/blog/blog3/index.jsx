@@ -1,24 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 
-const ImageCard = ({ imageSrc, title }) => {
+const CardWithOverlap = ({ image, title }) => {
     return (
-        <div className="relative overflow-hidden shadow-lg rounded-3xl bg-orange-1 w-full">
-            <div className="overflow-hidden">
-                <img src={imageSrc} alt={title} className="h-auto" />
-            </div>
-
-            <div className="absolute bottom-10 w-full p-4 ">
-                <p className='text-xs md:text-lg font-normal md:font-semibold rounded-3xl px-2 md:px-3 py-2 md:py-2 mx-auto shadow-2xl text-center flex'>
-                    <div className='flex space-x-11 p-5 bg-white text-orange-9 rounded-full'>
-                        {title}
-                        <FaArrowRightLong className='my-auto' />
-                    </div>
-                </p>
-            </div>
+        <div className="relative">
+            <Link to='/insight'>
+                <img src={image} alt={title} className="w-full h-auto rounded-lg" />
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
+                    <h2 className="text-xl text-orange-9 p-2 rounded-3xl flex font-semibold bg-white transition-all ease-linear duration-300 hover:bg-orange-10 hover:text-orange-1 shadow-md hover:shadow-2xl">
+                        {title} <FaArrowRight className='my-auto mx-2' />
+                    </h2>
+                </div>
+            </Link>
         </div>
     );
 };
 
-export default ImageCard;
+export default CardWithOverlap;

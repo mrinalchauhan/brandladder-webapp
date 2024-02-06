@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root {
   --orange-1: #ffeeef;
   --orange-2: #ffd7d9;
@@ -14,4 +16,26 @@
   --orange-9: #913337;
   --orange-10: #73282b;
   --gray-1: ##767676;
+}
+
+/* Hide the scrollbar track */
+::-webkit-scrollbar {
+  /* display: none; */
+  background-color: transparent;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #73282b; 
+  border-radius: 10px; 
+}
+
+/* Optionally, style the track (the area where the thumb moves) */
+::-webkit-scrollbar-track {
+  background-color: #ffeeef; 
+}
+
+/* Optionally, style the corner where two scrollbars meet */
+::-webkit-scrollbar-corner {
+  background-color: #73282b; /* color of the corner */
 }

@@ -6,7 +6,7 @@ const ImageCard = ({ imageSrc, date, domain, title }) => {
     return (
         <div className="relative overflow-hidden shadow-lg rounded-3xl bg-orange-1 w-full">
             <div className="overflow-hidden">
-                <img src={imageSrc} alt={title} className="h-auto" />
+                <img src={imageSrc} alt={title} className="h-80 md:h-full w-full" />
             </div>
 
             <div className="absolute top-0 left-0 p-4 text-white">

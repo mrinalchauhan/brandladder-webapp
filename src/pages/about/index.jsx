@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import useSmoothScroll from '../../hooks/general/useSmoothScroll';
 
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
@@ -12,6 +13,8 @@ import AboutImg from '../../assests/images/feature-img/about-4.jpg'
 import Founder from '../../assests/images/feature-img/founder-img.png'
 
 const About = () => {
+    useSmoothScroll();
+
     return (
         <section className='bg-orange-2'>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
@@ -25,7 +28,9 @@ const About = () => {
                 </aside>
             </div>
 
-            <img src={AboutImg} alt="" className='h-96 min-w-full' />
+            <div className="overflow-hidden h-96 mx-auto my-auto">
+                <img src={AboutImg} alt="" className='min-w-full' />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 p-2">
                 <img src={Founder} alt="" />

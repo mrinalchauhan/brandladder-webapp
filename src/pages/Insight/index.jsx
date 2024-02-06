@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import useSmoothScroll from '../../hooks/general/useSmoothScroll'
+
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { FaPlayCircle } from "react-icons/fa";
 
@@ -16,6 +18,7 @@ import BlogCard2 from '../../components/cards/blog/blog2';
 import HoverCard from '../../components/cards/blog/blog3'
 
 const Insight = () => {
+    useSmoothScroll();
 
     return (
         <section className='bg-orange-3 py-10'>
@@ -43,7 +46,7 @@ const Insight = () => {
 const Blogs = () => {
     return (
         <section className='bg-inherit p-4'>
-            <h1 className='text-3xl font-medium  pb-4 mb-4' >Best Blog Of The Weeek</h1>
+            <h1 className='text-3xl font-medium pb-5 mb-4' >Best Blog Of The Week</h1>
             {/* <img src={TitleBg} alt="" className='max-w-60 absolute bottom-52 right-0' /> */}
             {/* <section className="flex bg-orange-2 py-5 px-2">
                 <aside>
@@ -76,8 +79,8 @@ const Blogs = () => {
                 </aside>
             </section> */}
 
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <aside className=''>
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <aside className='col-span-2 my-auto'>
                     <ImageCard
                         imageSrc={BlogImg1}
                         date='1 Jan 2024'
@@ -86,15 +89,17 @@ const Blogs = () => {
                     />
                 </aside>
 
-                <aside className='space-y-4'>
-                    <ImageCard
-                        imageSrc={BlogImg2}
-                        date='1 Jan 2024'
-                        domain='UI/UX'
-                        title='Top 12 Figma plugins for UI/UX designers in 2023'
-                    />
+                <aside className='space-y-4 col-span-1'>
+                    <div className="overflow-hidden ">
+                        <ImageCard
+                            imageSrc={BlogImg2}
+                            date='1 Jan 2024'
+                            domain='UI/UX'
+                            title='Top 12 Figma plugins for UI/UX designers in 2023'
+                        />
+                    </div>
 
-                    <HoverCard imageSrc={BlogImg2} title='More Blogs' />
+                    <HoverCard image={BlogImg2} title='More Blogs' />
 
                 </aside>
             </section>

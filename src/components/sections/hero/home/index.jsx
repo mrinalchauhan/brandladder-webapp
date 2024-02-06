@@ -22,7 +22,7 @@ const HomeHeroSection = () => {
         <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-2">
                 <animated.div
-                    className='flex flex-col'
+                    className='flex flex-col my-auto'
                     ref={fadeInRightRef}
                     style={fadeInRight}
                 >
@@ -39,8 +39,10 @@ const HomeHeroSection = () => {
                         </button>
                     </div>
                     <div className="flex mt-10 items-end">
-                        <FaArrowDownLong className='my-auto mx-2' />
-                        <small>Scroll down to Explore</small>
+                        <div className='my-auto p-2 animate-bounce border-2 border-orange-5 rounded-full'>
+                            <FaArrowDownLong className='m-auto' />
+                        </div>
+                        <small className='my-auto mx-2'>Scroll down to Explore</small>
                     </div>
                 </animated.div>
                 <animated.div

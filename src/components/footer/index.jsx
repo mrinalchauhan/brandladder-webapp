@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Wave from 'react-wavify';
 
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";

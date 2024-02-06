@@ -26,6 +26,7 @@ const Services = () => {
             cardDesc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut maiores pariatur error aliquam? Illo, consequuntur delectus ',
             pricing: '99',
             cardLink: '/services',
+            trending: true,
         },
         {
             cardTitle: 'Android App services',

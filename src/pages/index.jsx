@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import useSmoothScroll from '../hooks/general/useSmoothScroll';
 
 import PageHeader from '../components/headers/page-header'
 import TestemonialCarousel from '../components/carousel/testimonial-carousel'
 import BlogCard from '../components/cards/blog'
-
 import HomeHeroSection from '../components/sections/hero/home';
 import Pricing from '../components/sections/pricing';
 import HomeAboutSection from '../components/sections/about/home';
 
 import Img from '../assests/images/logo1.png';
+// import Circlee from '../assests/images/feature-img/circel.png'
 // import GalaryImg1 from '../assests/images/feature-img/gallery-bg.png'
 // import GalaryImg2 from '../assests/images/feature-img/gallery-small.png'
 
 const Home = () => {
-    useSmoothScroll();
+    // useSmoothScroll();
+
 
     const testemonialList = [
         {
@@ -71,11 +73,16 @@ const Home = () => {
                 <HomeHeroSection />
             </section>
 
-            <section className='px-14 py-10'>
+            <section className='px-14 pt-10 bg-orange-1 z-20'>
                 <HomeAboutSection />
             </section>
 
-            <section>
+            <section className=''>
+                {/* <div className="relative left-10 bg-black h-40 top-28 w-40 rounded-full z-10"></div>
+                <div className="absolute bg-orange-3 h-36 w-36 rounded-full z-20"></div>
+                <div className="absolute bg-orange-4 h-24 w-24 rounded-full z-30"></div> */}
+
+                <div className="w-full h-20 md:h-32 bg-orange-2 rounded-tl-full rounded-tr-lg"></div>
                 <Pricing featureList1={featureList} featureList2={featureList} featureList3={featureList} />
             </section>
 
