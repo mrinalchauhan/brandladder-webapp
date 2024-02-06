@@ -1,5 +1,7 @@
 import React from 'react';
 
+import useSmoothScroll from '../hooks/general/useSmoothScroll';
+
 import PageHeader from '../components/headers/page-header'
 import TestemonialCarousel from '../components/carousel/testimonial-carousel'
 import BlogCard from '../components/cards/blog'
@@ -13,6 +15,7 @@ import Img from '../assests/images/logo1.png';
 // import GalaryImg2 from '../assests/images/feature-img/gallery-small.png'
 
 const Home = () => {
+    useSmoothScroll();
 
     const testemonialList = [
         {
@@ -53,27 +56,30 @@ const Home = () => {
         },
     ]
 
+    const featureList = [
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+        "billed annually 17 billed monthly",
+    ]
+
     return (
         <div>
-            {/* hero section start */}
             <section className="bg-orange-2 p-10">
                 <HomeHeroSection />
             </section>
-            {/* hero section end */}
 
-            {/* about section start */}
             <section className='px-14 py-10'>
                 <HomeAboutSection />
             </section>
-            {/* about section end */}
 
-            {/* pricing section start  */}
             <section>
-                <Pricing />
+                <Pricing featureList1={featureList} featureList2={featureList} featureList3={featureList} />
             </section>
-            {/* pricing section end  */}
 
-            {/* testimonial start  */}
             <section className='my-5'>
                 <PageHeader
                     title='Trusted by all'

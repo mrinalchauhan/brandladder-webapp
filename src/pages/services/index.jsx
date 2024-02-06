@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
 import ServiceSection from '../../components/sections/service'
-import TitleBg from '../../assests/images/feature-img/title-bg.png'
-
+import TrendingCarousel from '../../components/carousel/trending-carousel'
 import { CiSearch } from "react-icons/ci";
-
+import Img from '../../assests/images/logo1.png'
 const Services = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -49,7 +48,7 @@ const Services = () => {
         <div className='p-5 bg-orange-2'>
             {/* searchbar */}
             <section className='my-5'>
-                <div className='py-0 border-2 mx-auto border-orange-6 max-w-lg flex flex-col-reverse md:flex-row justify-center items-center rounded-3xl'>
+                <div className='py-0 border-2 mx-auto border-orange-6 max-w-lg flex flex-col md:flex-row justify-center items-center rounded-3xl'>
                     <select className="select border-none max-w-44 text-orange-6">
                         <option>Technical </option>
                         <option>Digital Maketing</option>
@@ -66,6 +65,11 @@ const Services = () => {
                     <CiSearch className='my-auto w-20 hidden md:block' />
                 </div>
             </section>
+
+            <div>
+                <TrendingCarousel />
+            </div>
+
             <div className="my-10">
                 <ServiceSection serviceList={serviceList} sectionTitle='Technical' />
             </div>

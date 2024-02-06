@@ -69,7 +69,7 @@ const Footer = () => {
                             </small>
                         </div>
                     </div>
-                    <div>
+                    <div className='my-auto' >
                         <span className="text-base font-bold tracking-wide text-gray-900">
                             Quick Links
                         </span>
@@ -93,7 +93,7 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="space-y-2 text-sm sm:col-span-2 ml-10">
+                    <div className="my-auto space-y-2 text-sm sm:col-span-2 mx-auto">
                         <p className="text-base font-bold tracking-wide text-gray-900">
                             Made with love in India
                         </p>

@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { animated } from 'react-spring';
+import useFadeInAnimation from '../../../../hooks/animations/useFadeInAnimation'
+import useFadeInUpAnimation from '../../../../hooks/animations/useFadeInUpAnimation'
 
 import { FaArrowDownLong } from "react-icons/fa6";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
@@ -6,19 +9,21 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import FeatureCard from '../../../cards/feature/counting'
 
 import HeroImg from '../../../../assests/images/feature-img/hero-main.png';
+import TextReplacementAnimation from '../../../../assests/animation/typeing'
 
 const HomeHeroSection = () => {
+    const [fadeInRef, fadeInAnimation] = useFadeInAnimation();
+    const [fadeInUpRef, fadeInUpAnimation] = useFadeInUpAnimation();
+
     return (
         <div>
 
-            <div className="grid grid-cols-2 gap-2">
-                <div className='flex flex-col' >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-2">
+                <animated.div className='flex flex-col' ref={fadeInRef} style={fadeInAnimation}>
                     <div>
                         <small>........ Digital Agency</small>
                     </div>
-                    <h1 className='text-black text-5xl font-bold my-8 leading-tight'>
-                        Build, Grow Your Digital marketing, CA services and Technological services
-                    </h1>
+                    <TextReplacementAnimation />
                     <div className="flex">
                         <button className="btn btn-sm btn-outline-secondary text-orange-6 border-orange-6 shadow-xl hover:text-orange-2 hover:bg-orange-6 mx-2">
                             Play Video
@@ -31,17 +36,17 @@ const HomeHeroSection = () => {
                         <FaArrowDownLong className='my-auto mx-2' />
                         <small>Scroll down to Explore</small>
                     </div>
-                </div>
-                <div className='mx-auto' >
+                </animated.div>
+                <animated.div className='mx-auto' style={fadeInAnimation}>
                     <img src={HeroImg} alt="" className='max-h-dvh' />
-                </div>
+                </animated.div>
             </div>
-            <div className='grid grid-cols-4 gap-4 mt-10 px-5' >
+            <animated.div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-10 px-5' ref={fadeInUpRef} style={fadeInUpAnimation} >
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='350 ' text='Project completed' />
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='325 ' text='Project Running' />
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='150 ' text='Happy clients' />
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='60 ' text='Services' />
-            </div>
+            </animated.div>
         </div>
     )
 }

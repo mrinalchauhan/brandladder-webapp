@@ -26,7 +26,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                 </div>
             </div>
             <div className="flex flex-wrap lg:justify-evenly justify-center items-center">
-                <div className="my-2">
+                <div className="my-4">
                     <PricingCard
                         palnType='Silver plan'
                         totalPrice='12.99'
@@ -34,7 +34,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                         featureList={featureList1}
                     />
                 </div>
-                <div className="my-2">
+                <div className="my-4">
                     <PricingCard
                         palnType='Silver plan'
                         totalPrice='12.99'
@@ -43,7 +43,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                         prime={true}
                     />
                 </div>
-                <div className="my-2">
+                <div className="my-4">
                     <PricingCard
                         palnType='Silver plan'
                         totalPrice='12.99'

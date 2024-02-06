@@ -1,7 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types'
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -30,7 +30,11 @@ const TestemonialCarousel = ({ testemonialList }) => {
                     spaceBetween: 50,
                 },
             }}
-            // modules={[Pagination]}
+            autoplay={{
+                delay: 2500,
+                disableOnInteraction: true,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper cursor-grab"
         >
             {

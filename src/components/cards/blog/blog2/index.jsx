@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const BlogCard2 = ({ order, image, editor, designation, topic, date, readTime, desc, navLink }) => {
     return (
-        <div className="card max-w-full shadow-lg bg-inherit">
-            <div className={`card-body max-w-full grid grid-${order}-5 gap-4 border p-4`}>
+        <div className="card max-w-full shadow-2xl bg-inherit border-none rounded-2xl">
+            <div className={`card-body max-w-full grid grid-row-1 md:grid-${order}-5 gap-4 border p-4`}>
                 <img
                     src={image} alt={topic}
                     className='col-span-2 h-full w-full rounded-3xl'

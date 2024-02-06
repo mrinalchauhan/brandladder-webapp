@@ -7,12 +7,13 @@ import { FaPlayCircle } from "react-icons/fa";
 
 import BlogImg1 from '../../assests/images/temprary/blog1.jpg'
 import BlogImg2 from '../../assests/images/temprary/blog2.jpg'
-import BlogImg3 from '../../assests/images/temprary/blog3.jpg'
-import TitleBg from '../../assests/images/feature-img/title-bg.png'
+// import BlogImg3 from '../../assests/images/temprary/blog3.jpg'
+// import TitleBg from '../../assests/images/feature-img/title-bg.png'
 import TestimonialImg from '../../assests/images/temprary/testimonials.png'
 
 import ImageCard from '../../components/cards/imageoverlap';
 import BlogCard2 from '../../components/cards/blog/blog2';
+import HoverCard from '../../components/cards/blog/blog3'
 
 const Insight = () => {
 
@@ -20,10 +21,10 @@ const Insight = () => {
         <section className='bg-orange-3 py-10'>
             <Tabs>
                 <TabList className="flex justify-center">
-                    <Tab className="cursor-pointer text-black font-medium rounded-l-3xl py-2 px-6 border-b-2 border-transparent active:shadow-2xl active:text-orange-8 focus:shadow-md focus:text-orange-8 hover:text-orange-4 transition-all duration-300  bg-white">
+                    <Tab className="cursor-pointer text-black font-medium rounded-l-3xl py-2 px-6 border-b-2 border-transparent border-none active:shadow-2xl active:text-orange-8 focus:shadow-md focus:text-orange-8 hover:text-orange-4 transition-all duration-300  bg-white">
                         Blogs
                     </Tab>
-                    <Tab className="cursor-pointer text-black font-medium rounded-r-3xl py-2 px-6 border-b-2 border-transparent active:shadow-2xl active:text-orange-8 focus:shadow-md focus:text-orange-8 hover:text-orange-4 transition-all duration-300  bg-white">
+                    <Tab className="cursor-pointer text-black font-medium rounded-r-3xl py-2 px-6 border-b-2 border-transparent border-none active:shadow-2xl active:text-orange-8 focus:shadow-md focus:text-orange-8 hover:text-orange-4 transition-all duration-300  bg-white">
                         Testimonials
                     </Tab>
                 </TabList>
@@ -41,11 +42,11 @@ const Insight = () => {
 
 const Blogs = () => {
     return (
-        <section className='bg-inherit'>
+        <section className='bg-inherit p-4'>
             <h1 className='text-3xl font-medium  pb-4 mb-4' >Best Blog Of The Weeek</h1>
             {/* <img src={TitleBg} alt="" className='max-w-60 absolute bottom-52 right-0' /> */}
-            <section className="grid grid-cols-2 gap-4 bg-orange-2 py-5 px-2">
-                <aside className="">
+            {/* <section className="flex bg-orange-2 py-5 px-2">
+                <aside>
                     <ImageCard
                         imageSrc={BlogImg1}
                         date='July 17,2023'
@@ -73,11 +74,34 @@ const Blogs = () => {
                         </div>
                     </div>
                 </aside>
+            </section> */}
+
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <aside className=''>
+                    <ImageCard
+                        imageSrc={BlogImg1}
+                        date='1 Jan 2024'
+                        domain='UI/UX'
+                        title='Top 12 Figma plugins for UI/UX designers in 2023'
+                    />
+                </aside>
+
+                <aside className='space-y-4'>
+                    <ImageCard
+                        imageSrc={BlogImg2}
+                        date='1 Jan 2024'
+                        domain='UI/UX'
+                        title='Top 12 Figma plugins for UI/UX designers in 2023'
+                    />
+
+                    <HoverCard imageSrc={BlogImg2} title='More Blogs' />
+
+                </aside>
             </section>
 
             <h1 className='py-3 px-1 rounded-md text-2xl' >Recommended</h1>
-            <section className='bg-orange-2 lg:px-10 px-4 py-10'>
-                <div className="grid grid-cols-5 gap-4">
+            <section className='bg-inherit md:bg-orange-2 lg:px-10 px-4 py-10'>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                     <div className="grid col-span-3 grid-row-2 sm:grid-col-1 gap-4">
                         <BlogCard2
                             order='cols'
@@ -124,9 +148,9 @@ const Blogs = () => {
 const Testimonials = () => {
     return (
         <section className='bg-inherit'>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2">
                 <img src={TestimonialImg} alt="" />
-                <aside className='text-black flex flex-col gap-10 my-auto'>
+                <aside className='text-black flex flex-col gap-10 my-auto md:text-left text-center px-2 '>
                     <div>
                         <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
                         <small>Founder of BRANDLADDER</small>
@@ -134,16 +158,14 @@ const Testimonials = () => {
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
-                    <div className='flex'>
-                        <FaPlayCircle className='my-auto mr-2 text-3xl' />
+                    <div className='flex text-left mx-auto md:mx-0'>
+                        <FaPlayCircle className='my-auto mr-2 text-6xl md:text-4xl' />
                         <div className='flex flex-col'>
                             <small>Watch video</small>
-                            <small>Lorem Ipsum is simply dummy text of the printing and typesetting</small>
+                            <small className='text-black'>Lorem Ipsum is simply dummy text of the printing and typesetting</small>
                         </div>
                     </div>
                 </aside>
-                {/* <img src={TitleBg} alt="" className='max-w-36 mx-auto mt-5' />
-                <img src={TitleBg} alt="" className='max-w-28 relative bottom-20 left-1/2' /> */}
             </div>
         </section>
     )

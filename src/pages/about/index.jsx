@@ -14,7 +14,7 @@ import Founder from '../../assests/images/feature-img/founder-img.png'
 const About = () => {
     return (
         <section className='bg-orange-2'>
-            <div className="grid grid-cols-2 gap-4 px-5 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
                 <aside>
                     <h1 className='text-black text-5xl font-semibold'>We are here to make your project easier </h1>
                 </aside>
@@ -27,7 +27,7 @@ const About = () => {
 
             <img src={AboutImg} alt="" className='h-96 min-w-full' />
 
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 p-2">
                 <img src={Founder} alt="" />
                 <aside className='text-black flex flex-col gap-10 my-auto'>
                     <div>
@@ -37,7 +37,7 @@ const About = () => {
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
-                    <div className='flex justify-between w-2/3 border border-orange-10 rounded-3xl px-6 py-4'>
+                    <div className='flex justify-between w-full md:w-2/3 border border-orange-10 rounded-3xl px-6 py-4'>
                         <BsTwitterX className='text-3xl text-orange-10 font-semibold' />
                         <MdOutlineMailOutline className='text-3xl text-orange-10' />
                         <FaInstagram className='text-3xl text-orange-10 font-semibold' />
@@ -49,13 +49,47 @@ const About = () => {
 
             <div className='p-10'>
                 <h2>Meet Our Team</h2>
-                <div className="grid grid-cols-3 gap-8">
-                    <TeamCard />
-                    <TeamCard />
-                    <TeamCard />
-                    <TeamCard />
-                    <TeamCard />
-                    <TeamCard />
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <TeamCard
+                        image={Founder}
+                        name='Founder'
+                        designation='Founder'
+                        twitterLink='/Founder'
+                        emailLink='/Founder'
+                        instaLink='/Founder'
+                        facebookLink='/Founder'
+                        linkedinLink='/Founder'
+                    />
+                    <TeamCard
+                        image={Founder}
+                        name='Founder'
+                        designation='Founder'
+                        twitterLink='/Founder'
+                        emailLink='/Founder'
+                        instaLink='/Founder'
+                        facebookLink='/Founder'
+                        linkedinLink='/Founder'
+                    />
+                    <TeamCard
+                        image={Founder}
+                        name='Founder'
+                        designation='Founder'
+                        twitterLink='/Founder'
+                        emailLink='/Founder'
+                        instaLink='/Founder'
+                        facebookLink='/Founder'
+                        linkedinLink='/Founder'
+                    />
+                    <TeamCard
+                        image={Founder}
+                        name='Founder'
+                        designation='Founder'
+                        twitterLink='/Founder'
+                        emailLink='/Founder'
+                        instaLink='/Founder'
+                        facebookLink='/Founder'
+                        linkedinLink='/Founder'
+                    />
                 </div>
             </div>
         </section>
