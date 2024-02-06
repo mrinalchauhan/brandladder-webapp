@@ -14,11 +14,11 @@ const Services = () => {
         setSearchQuery(event.target.value);
     };
 
-    const handleSearchSubmit = (event) => {
-        event.preventDefault();
-        // Implement your search logic here
-        console.log('Search for:', searchQuery);
-    };
+    // const handleSearchSubmit = (event) => {
+    //     event.preventDefault();
+    //     // Implement your search logic here
+    //     console.log('Search for:', searchQuery);
+    // };
 
     const serviceList = [
         {

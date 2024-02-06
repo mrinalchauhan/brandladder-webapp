@@ -6,7 +6,7 @@ const Login = () => {
 
     return (
         <div>
-            Login
+            Login page  comming soon
         </div>
     )
 }

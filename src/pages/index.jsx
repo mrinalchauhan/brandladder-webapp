@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import useSmoothScroll from '../hooks/general/useSmoothScroll';
 
@@ -15,7 +15,7 @@ import Img from '../assests/images/logo1.png';
 // import GalaryImg2 from '../assests/images/feature-img/gallery-small.png'
 
 const Home = () => {
-    // useSmoothScroll();
+    useSmoothScroll();
 
 
     const testemonialList = [

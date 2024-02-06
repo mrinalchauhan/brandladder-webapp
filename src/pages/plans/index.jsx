@@ -4,7 +4,7 @@ import Snowfall from 'react-snowfall';
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
 import Pricing from '../../components/sections/pricing'
-import TitleBg from '../../assests/images/feature-img/title-bg.png'
+// import TitleBg from '../../assests/images/feature-img/title-bg.png'
 
 const Plans = () => {
     useSmoothScroll();

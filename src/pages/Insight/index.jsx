@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
-import { FaArrowRightLong } from 'react-icons/fa6'
+// import { FaArrowRightLong } from 'react-icons/fa6'
 import { FaPlayCircle } from "react-icons/fa";
 
 import BlogImg1 from '../../assests/images/temprary/blog1.jpg'

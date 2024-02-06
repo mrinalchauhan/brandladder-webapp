@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { animated } from 'react-spring';
+// import { animated } from 'react-spring';
 import useSound from 'use-sound';
 
-import useFadeInDownAnimation from '../../hooks/animations/useFadeInDownAnimation';
+// import useFadeInDownAnimation from '../../hooks/animations/useFadeInDownAnimation';
 
 import { MdOutlineContacts } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
@@ -17,7 +17,7 @@ import PageFlipSound from '../../assests/sound/page-flip.mp3'
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
-    const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation();
+    // const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation();
     const location = useLocation();
 
     const [play] = useSound(PageFlipSound);
@@ -104,9 +104,11 @@ const Navbar = () => {
                 }
             </div>
             <div className="navbar-end">
-                <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
-                    SignIn
-                </button>
+                <Link to='/signup'>
+                    <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
+                        SignIn
+                    </button>
+                </Link>
             </div>
 
             {/* Responsive Menu */}
