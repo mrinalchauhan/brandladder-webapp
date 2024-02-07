@@ -1,27 +1,27 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { motion } from "framer-motion";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
-// import { FaArrowRightLong } from 'react-icons/fa6'
 import { FaPlayCircle } from "react-icons/fa";
 
 import BlogImg1 from '../../assests/images/temprary/blog1.jpg'
 import BlogImg2 from '../../assests/images/temprary/blog2.jpg'
-// import BlogImg3 from '../../assests/images/temprary/blog3.jpg'
-// import TitleBg from '../../assests/images/feature-img/title-bg.png'
 import TestimonialImg from '../../assests/images/temprary/testimonials.png'
 
 import ImageCard from '../../components/cards/imageoverlap';
 import BlogCard2 from '../../components/cards/blog/blog2';
 import HoverCard from '../../components/cards/blog/blog3'
 
-const Insight = () => {
+const InsightContent = () => {
     useSmoothScroll();
 
+    const bounceAnimationProps = useBounceAnimation();
+
     return (
-        <section className='bg-orange-3 py-10'>
+        <motion.section {...bounceAnimationProps} className='bg-orange-3 py-10'>
             <Tabs>
                 <TabList className="flex justify-center">
                     <Tab className="cursor-pointer text-black font-medium rounded-l-3xl py-2 px-6 border-b-2 border-transparent border-none active:shadow-2xl active:text-orange-8 focus:shadow-md focus:text-orange-8 hover:text-orange-4 transition-all duration-300  bg-white">
@@ -39,7 +39,7 @@ const Insight = () => {
                     <Testimonials />
                 </TabPanel>
             </Tabs>
-        </section>
+        </motion.section>
     )
 }
 
@@ -176,4 +176,4 @@ const Testimonials = () => {
     )
 }
 
-export default Insight
+export default InsightContent;

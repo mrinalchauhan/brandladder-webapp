@@ -1,4 +1,7 @@
 import React from 'react'
+import { motion } from "framer-motion";
+
+import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
 import { IoMailOutline } from "react-icons/io5";
@@ -9,8 +12,10 @@ import ContactIMg from '../../assests/images/feature-img/contact.jpg'
 const Contact = () => {
     useSmoothScroll();
 
+    const bounceAnimationProps = useBounceAnimation();
+
     return (
-        <section className='bg-orange-2 md:p-10 p-0'>
+        <motion.section {...bounceAnimationProps} className='bg-orange-2 md:p-10 p-0'>
             <h2 className='my-4 md:block hidden'>..... Get In Touch</h2>
             <div className="flex flex-col-reverse md:flex-row justify-evenly ">
                 <aside className='md:block hidden mx-2'>
@@ -70,7 +75,7 @@ const Contact = () => {
                     </div>
                 </aside>
             </div>
-        </section>
+        </motion.section>
     )
 }
 

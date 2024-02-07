@@ -1,4 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+import useBounceAnimation from '../../hooks/animations/useBounceAnimation'
 import useSmoothScroll from '../../hooks/general/useSmoothScroll';
 
 import { FaLinkedinIn } from "react-icons/fa";
@@ -15,8 +18,10 @@ import Founder from '../../assests/images/feature-img/founder-img.png'
 const About = () => {
     useSmoothScroll();
 
+    const bounceAnimationProps = useBounceAnimation();
+
     return (
-        <section className='bg-orange-2'>
+        <motion.section {...bounceAnimationProps} className='bg-orange-2'>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
                 <aside>
                     <h1 className='text-black text-5xl font-semibold'>We are here to make your project easier </h1>
@@ -97,7 +102,7 @@ const About = () => {
                     />
                 </div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 

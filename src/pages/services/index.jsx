@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
+import { animated } from 'react-spring';
+
+import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
+import useFadeInDownAnimation from '../../hooks/animations/useFadeInDownAnimation'
 import useSmoothScroll from '../../hooks/general/useSmoothScroll';
 
 import ServiceSection from '../../components/sections/service'
@@ -9,6 +14,9 @@ const Services = () => {
     useSmoothScroll();
 
     const [searchQuery, setSearchQuery] = useState('');
+
+    const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation()
+    const bounceAnimationProps = useBounceAnimation();
 
     const handleInputChange = (event) => {
         setSearchQuery(event.target.value);
@@ -49,9 +57,9 @@ const Services = () => {
     ]
 
     return (
-        <div className='p-5 bg-orange-2'>
+        <motion.div {...bounceAnimationProps} className='p-5 bg-orange-2'>
             {/* searchbar */}
-            <section className='my-5'>
+            <animated.section className='my-5' ref={fadeInDownRef} style={fadeInDown}>
                 <div className='py-0 border-2 mx-auto border-orange-6 max-w-lg flex flex-col md:flex-row justify-center items-center rounded-3xl'>
                     <select className="select border-none max-w-44 text-orange-6">
                         <option>Technical </option>
@@ -68,7 +76,7 @@ const Services = () => {
                     />
                     <CiSearch className='my-auto w-20 hidden md:block' />
                 </div>
-            </section>
+            </animated.section>
 
             <div>
                 <TrendingCarousel />
@@ -83,7 +91,7 @@ const Services = () => {
             <div className="my-10">
                 <ServiceSection serviceList={serviceList} sectionTitle='CA & Registration' />
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSpring } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 
-const useFadeInUpAnimation = (duration = 1010) => {
+const useFadeInUpAnimation = (duration = 1050) => {
 
     const [shouldAnimate, setShouldAnimate] = useState(false);
 

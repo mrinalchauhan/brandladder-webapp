@@ -1,5 +1,7 @@
 import React from 'react';
+import { motion } from "framer-motion";
 
+import useBounceAnimation from '../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../hooks/general/useSmoothScroll';
 
 import PageHeader from '../components/headers/page-header'
@@ -17,6 +19,7 @@ import Img from '../assests/images/logo1.png';
 const Home = () => {
     useSmoothScroll();
 
+    const bounceAnimationProps = useBounceAnimation();
 
     const testemonialList = [
         {
@@ -68,7 +71,7 @@ const Home = () => {
     ]
 
     return (
-        <div>
+        <motion.div {...bounceAnimationProps} >
             <section className="bg-orange-2 p-10">
                 <HomeHeroSection />
             </section>
@@ -123,7 +126,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </div >
+        </motion.div >
     )
 }
 

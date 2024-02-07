@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import { animated } from 'react-spring';
 import useSound from 'use-sound';
 
-// import useFadeInDownAnimation from '../../hooks/animations/useFadeInDownAnimation';
+import ScrollProgressBar from '../progress-bar/ScrollProgress';
 
 import { MdOutlineContacts } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
@@ -79,6 +78,7 @@ const Navbar = () => {
     return (
         // <header>
         <header className={navbarClass}>
+            <ScrollProgressBar />
             <div className="navbar-start">
                 <Link to="/" className="navbar-item max-w-40">
                     <img src={FullLogo} alt="Brnadladder" />
