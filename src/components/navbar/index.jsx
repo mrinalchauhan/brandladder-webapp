@@ -5,7 +5,7 @@ import useSound from 'use-sound';
 // import { useAuth } from '../../context/AuthContext.js'
 import ScrollProgressBar from '../progress-bar/ScrollProgress';
 
-import { RxAvatar } from "react-icons/rx";
+// import { RxAvatar } from "react-icons/rx";
 import { MdOutlineContacts } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
