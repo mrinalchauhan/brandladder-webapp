@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation'
@@ -8,7 +9,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandFacebook } from "react-icons/tb";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { BsTwitterX } from "react-icons/bs";
+// import { BsTwitterX } from "react-icons/bs";
 
 import TeamCard from '../../components/cards/team';
 
@@ -22,39 +23,52 @@ const About = () => {
 
     return (
         <motion.section {...bounceAnimationProps} className='bg-orange-2'>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
                 <aside>
-                    <h1 className='text-black text-5xl font-semibold'>We are here to make your project easier </h1>
+                    <h1 class='text-black text-5xl font-bold'>
+                        We are here to make your project easier
+                    </h1>
                 </aside>
-                <aside>
-                    <p className='my-auto'>
+                <aside class="mt-auto">
+                    <p class='my-auto text-sm text-black'>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                     </p>
                 </aside>
             </div>
 
-            <div className="overflow-hidden h-96 mx-auto my-auto">
-                <img src={AboutImg} alt="" className='min-w-full' />
+
+            <div className="mx-auto my-auto">
+                <img src={AboutImg} alt="" className='min-w-full rounded' />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 p-2">
-                <img src={Founder} alt="" />
-                <aside className='text-black flex flex-col gap-10 my-auto'>
-                    <div>
-                        <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
-                        <small>Founder of BRANDLADDER</small>
-                    </div>
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                    <div className='flex justify-between w-full md:w-2/3 border border-orange-10 rounded-3xl px-6 py-4'>
-                        <BsTwitterX className='text-3xl text-orange-10 font-semibold' />
-                        <MdOutlineMailOutline className='text-3xl text-orange-10' />
-                        <FaInstagram className='text-3xl text-orange-10 font-semibold' />
-                        <TbBrandFacebook className='text-3xl text-orange-10 font-semibold' />
-                        <FaLinkedinIn className='text-3xl text-orange-10 font-semibold' />
-                    </div>
-                </aside>
+            <div className="my-8">
+                <h1 className='text-center text-3xl md:text-5xl text-black font-semibold md:font-bold'>Our Founder</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 p-2">
+                    <img src={Founder} alt="" />
+                    <aside className='text-black flex flex-col gap-10 my-auto'>
+                        <div>
+                            <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
+                            <small>Founder of BRANDLADDER</small>
+                        </div>
+                        <p className='text-sm md:text-lg'>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <div className='flex justify-between w-full md:w-2/3 border border-orange-10 rounded-3xl px-6 py-4'>
+                            <Link to='/' target='_blank' >
+                                <MdOutlineMailOutline className='text-3xl text-orange-10' />
+                            </Link>
+                            <Link to='https://www.instagram.com/doc_udaykiran/' target='_blank' >
+                                <FaInstagram className='text-3xl text-orange-10 font-semibold' />
+                            </Link>
+                            <Link to='/' target='_blank' >
+                                <TbBrandFacebook className='text-3xl text-orange-10 font-semibold' />
+                            </Link>
+                            <Link to='https://www.linkedin.com/in/dr-uday-kiran-472733192/' target='_blank' >
+                                <FaLinkedinIn className='text-3xl text-orange-10 font-semibold' />
+                            </Link>
+                        </div>
+                    </aside>
+                </div>
             </div>
 
             <div className='p-10'>

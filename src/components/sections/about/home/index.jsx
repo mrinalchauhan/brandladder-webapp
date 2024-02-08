@@ -33,7 +33,7 @@ const HomeAboutSection = () => {
             </div>
 
             <div className='flex flex-col-reverse md:flex-row justify-evenly'>
-                <animated.div className='flex flex-col my-auto space-y-4 flex-grow' // Use flex-grow to evenly divide space
+                <animated.div className='flex flex-col my-auto space-y-4 flex-grow'
                     ref={fadeInRightRef1}
                     style={{ ...fadeInRight1, flexBasis: 0 }}
                 >
@@ -82,7 +82,7 @@ const HomeAboutSection = () => {
                 </animated.div>
             </div>
 
-            <div className='flex flex-col-reverse md:flex-row justify-evenly mt-4'>
+            {/* <div className='flex flex-col-reverse md:flex-row justify-evenly mt-4'>
                 <animated.div
                     className='flex flex-col my-auto space-y-4 flex-grow'
                     ref={fadeInRightRef3}
@@ -103,7 +103,35 @@ const HomeAboutSection = () => {
                 >
                     <img src={AboutImg3} alt="BandLadder" className='max-h-80 mx-auto' />
                 </animated.div>
+            </div> */}
+
+            <div className='flex flex-col-reverse md:flex-row justify-evenly'>
+                <animated.div className='flex flex-col my-auto space-y-4 flex-grow'
+                    ref={fadeInRightRef1}
+                    style={{ ...fadeInRight1, flexBasis: 0 }}
+                >
+                    <h2 className='text-gray-600 text-3xl md:text-4xl font-normal md:font-semibold'>
+                        CA And Finance services
+                    </h2>
+                    <p className='text-gray-500'>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, voluptate ullam dignissimos voluptas veniam est aspernatur labore delectus asperiores cum? Culpa officia placeat consequuntur at magnam incidunt nostrum aperiam rem!
+                    </p>
+                    <OutlineButton text="Learn More" />
+                </animated.div>
+
+                <animated.div
+                    ref={fadeInLeftRef1}
+                    style={{ ...fadeInLeft1, flexBasis: 0 }}
+                    className='flex-grow' // Use flex-grow to evenly divide space
+                >
+                    <img
+                        src={AboutImg3}
+                        alt="BandLadder"
+                        className='max-h-80 mx-auto '
+                    />
+                </animated.div>
             </div>
+
         </section>
     )
 }

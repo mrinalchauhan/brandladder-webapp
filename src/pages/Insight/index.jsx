@@ -13,6 +13,7 @@ import TestimonialImg from '../../assests/images/temprary/testimonials.png'
 
 import ImageCard from '../../components/cards/imageoverlap';
 import BlogCard2 from '../../components/cards/blog/blog2';
+import BlogCard from '../../components/cards/blog';
 import HoverCard from '../../components/cards/blog/blog3'
 
 const InsightContent = () => {
@@ -146,6 +147,40 @@ const Blogs = () => {
                     </div>
                 </div>
             </section>
+            <section className='my-8'>
+
+            </section>
+            <h2 className='text-black text-xl font-normal my-4'>More Blogs ... </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <BlogCard
+                    image={TestimonialImg}
+                    domain='Test Blog'
+                    topic='Text Blog'
+                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                    link='/insight'
+                />
+                <BlogCard
+                    image={TestimonialImg}
+                    domain='Test Blog'
+                    topic='Text Blog'
+                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                    link='/insight'
+                />
+                <BlogCard
+                    image={TestimonialImg}
+                    domain='Test Blog'
+                    topic='Text Blog'
+                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                    link='/insight'
+                />
+                <BlogCard
+                    image={TestimonialImg}
+                    domain='Test Blog'
+                    topic='Text Blog'
+                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                    link='/insight'
+                />
+            </div>
         </section>
     )
 }

@@ -10,23 +10,23 @@ export const PricingCard = ({ palnType, price, featureList, prime = false }) => 
         <div className="mx-auto">
             <div className={`divide-y rounded-2xl shadow-xl border transition duration-500 ease-in-out  hover:border-none hover:shadow-2xl p-6 ${prime ? 'bg-orange-4 border-orange-3' : 'bg-orange-2 border-orange-3'}`}>
                 <div className="my-2">
-                    <h2 className="text-xl font-medium  flex">
+                    <h2 className="text-xl font-semibold flex">
                         <FaRegDotCircle className='my-auto mx-1' />
                         {palnType}
                     </h2>
                     <p className="my-2">
-                        <strong className="text-sm font-bold  sm:text-4xl"> {price}$ </strong>
+                        <strong className=""> {price}$ </strong>
                         <span className="text-sm font-medium text-gray-700">/month</span>
                     </p>
 
-                    <p className="text-gray-700 my-2">
+                    <p className="text-black my-2 font-bold">
                         billed annually <br />
                         $17 billed monthly
                     </p>
 
 
                     <button
-                        className="w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-medium text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
+                        className="w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-semibold text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
                     >
                         Get Plan
                     </button>
@@ -49,7 +49,7 @@ export const PricingCard = ({ palnType, price, featureList, prime = false }) => 
                     </ul>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

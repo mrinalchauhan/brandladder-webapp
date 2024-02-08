@@ -26,37 +26,37 @@ const Home = () => {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
         },
         {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in t'
         },
         {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'Loreorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in m ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
         },
         {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in itationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
         },
         {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
         },
         {
             image: Img,
             name: 'BrandLadder',
             designation: 'CEO and Founder',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in orem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in um exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor. Debitis, nesciunt'
         },
     ]
 
@@ -110,17 +110,19 @@ const Home = () => {
                         <div>
                             <BlogCard
                                 image={Img}
-                                name='Test Blog'
-                                designation='Text Blog'
+                                domain='Test Blog'
+                                topic='Text Blog'
                                 content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                                link='/insight'
                             />
                         </div>
                         <div>
                             <BlogCard
                                 image={Img}
-                                name='Test Blog'
-                                designation='Text Blog'
+                                domain='Test Blog'
+                                topic='Text Blog'
                                 content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
+                                link='/insight'
                             />
                         </div>
                     </div>

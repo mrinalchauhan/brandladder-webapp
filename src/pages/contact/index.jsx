@@ -18,8 +18,7 @@ const Contact = () => {
         <motion.section {...bounceAnimationProps} className='bg-orange-2 md:p-10 p-0'>
             <h2 className='my-4 md:block hidden'>..... Get In Touch</h2>
             <div className="flex flex-col-reverse md:flex-row justify-evenly ">
-                <aside className='md:block hidden mx-2'>
-                    <img src={ContactIMg} alt="" className='mb-5 rounded-lg' />
+                <aside className='md:block hidden mx-2 space-y-4'>
                     <div className="flex flex-col justify-between rounded-xl p-10 bg-orange-3">
                         <aside className='flex justify-evenly items-center bg-white py-2 rounded-lg mb-5' >
                             <IoMailOutline className='text-5xl' />
@@ -36,6 +35,7 @@ const Contact = () => {
                             </div>
                         </aside>
                     </div>
+                    <img src={ContactIMg} alt="" className='mb-5 rounded-lg' />
                 </aside>
                 <aside className='bg-orange-3 md:p-10 p-2 rounded-xl mx-2 space-y-10'>
                     <div className='space-y-4'>
@@ -72,6 +72,9 @@ const Contact = () => {
                             className="textarea-ghost textarea border-inherit text-orange-10 max-w-full bg-white  input"
                             placeholder="Leave Us Message"
                         />
+                        <button className="btn text-white bg-orange-7 w-full">
+                            Send
+                        </button>
                     </div>
                 </aside>
             </div>

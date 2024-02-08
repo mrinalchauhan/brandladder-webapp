@@ -9,10 +9,10 @@ import { BsTwitterX } from "react-icons/bs";
 
 const TeamCard = ({ image, name, designation, twitterLink, emailLink, instaLink, facebookLink, linkedinLink }) => {
     return (
-        <div className='card p-6 bg-orange-3'>
+        <div className='card p-6 bg-inherit shadow-none'>
             <div className="card-content">
                 <div className="grid grid-cols-5 gap-0">
-                    <div className="w-48 h-64 col-span-4 overflow-hidden">
+                    <div className="w-48 h-64 col-span-4 overflow-hidden image-container">
                         <img src={image} alt="" className='h-full w-full ' />
                     </div>
                     <div className="col-span-1 flex flex-row">

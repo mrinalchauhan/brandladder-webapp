@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useSound from 'use-sound';
 
+// import { useAuth } from '../../context/AuthContext.js'
 import ScrollProgressBar from '../progress-bar/ScrollProgress';
 
+import { RxAvatar } from "react-icons/rx";
 import { MdOutlineContacts } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
@@ -18,6 +20,7 @@ const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
     // const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation();
     const location = useLocation();
+    // const { currentUser } = useAuth()
 
     const [play] = useSound(PageFlipSound);
 
@@ -104,11 +107,19 @@ const Navbar = () => {
                 }
             </div>
             <div className="navbar-end">
-                <Link to='/signup'>
-                    <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
-                        SignIn
-                    </button>
-                </Link>
+                {/* {currentUser &&
+                    currentUser ? (
+                    <span className="badge badge-outline-primary">
+                        <RxAvatar />
+                    </span>
+                ) : (
+                    <Link to='/signup'> */}
+                <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
+                    SignIn
+                </button>
+                {/* </Link>
+                )
+                } */}
             </div>
 
             {/* Responsive Menu */}

@@ -34,13 +34,16 @@ const Plans = () => {
     ]
 
     return (
-        <motion.section {...bounceAnimationProps} className='bg-orange-2'>
+        <motion.section {...bounceAnimationProps} className='bg-orange-2 relative'>
             <Pricing featureList1={featureList1} featureList2={featureList2} featureList3={featureList1} />
             <Snowfall
-                color='#ff5960'
+                color='#ffb8bb'
+                snowflakeCount={20}
+                radius={[0.5, 20]}
+                speed={[0.5, 3]}
+                wind={[-0.5, 0.5]}
+                className="absolute top-0 left-0 w-full h-full opacity-80 shadow-2xl"
             />
-            {/* <img src={TitleBg} alt="" className='max-w-72 absolute top-96 left-96' />
-            <img src={TitleBg} alt="" /> */}
         </motion.section>
     )
 }
