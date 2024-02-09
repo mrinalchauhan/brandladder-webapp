@@ -22,11 +22,11 @@ export const PricingCard = ({ planType, monthlyPrice, usdPrice, featureList, pri
                     </h2>
                     <p className="my-2 text-2xl">
                         <strong className=""> Rs {monthlyPrice} </strong>
-                        <span className="text-sm font-medium text-gray-700">/month</span>
+                        <span className="text-sm font-medium text-gray-700">/yearly</span>
                     </p>
                     <p className="my-2 text-xl">
                         <strong className=""> $ {usdPrice} </strong>
-                        <span className="text-sm font-medium text-gray-700">/month</span>
+                        <span className="text-sm font-medium text-gray-700">/yearly</span>
                     </p>
 
                     {

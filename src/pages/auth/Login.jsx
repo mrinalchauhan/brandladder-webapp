@@ -79,6 +79,7 @@ const LoginPage = () => {
                             type='email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     </div>
                     <div className='relative'>
@@ -88,6 +89,7 @@ const LoginPage = () => {
                             type={showPass ? "text" : "password"}
                             value={password}
                             onChange={(value) => { setPassword(value.target.value) }}
+                            required
                         />
                         <button className='absolute top-0 right-0 border-none px-4 py-2' onClick={togglePasswordVisibility}>
                             {showPass ? <LuEye className='my-auto' /> : <LuEyeOff className='my-auto' />}

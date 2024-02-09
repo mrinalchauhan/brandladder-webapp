@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const PageHeader = ({ title, subtitle, section = false }) => {
     return (
@@ -19,9 +19,9 @@ const PageHeader = ({ title, subtitle, section = false }) => {
         </div>
     )
 }
-PageHeader.propTypes = {
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string,
-}
+// PageHeader.propTypes = {
+//     title: PropTypes.string.isRequired,
+//     subtitle: PropTypes.string,
+// }
 
 export default PageHeader
