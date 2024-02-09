@@ -40,7 +40,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <AnimatePresence mode="wait">
                     {selectedTab === 'featureList1' && (
                         <>
