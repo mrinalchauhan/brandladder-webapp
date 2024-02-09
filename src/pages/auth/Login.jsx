@@ -31,7 +31,8 @@ const LoginPage = () => {
 
     const handleEmailLogin = async () => {
         try {
-            await handleEmailSignUp(email, password);
+            const res = await handleEmailSignUp(email, password);
+            console.log(res)
             showSuccessToast('Login Successfully')
             navigate('/')
 
