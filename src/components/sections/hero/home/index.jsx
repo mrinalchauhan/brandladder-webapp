@@ -10,10 +10,10 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 
 import FeatureCard from '../../../cards/feature/counting'
 
-import HeroImg from '../../../../assests/images/feature-img/hero-main.png';
 import TextReplacementAnimation from '../../../../assests/animation/typeing'
+import { Link } from 'react-router-dom';
 
-const HomeHeroSection = () => {
+const HomeHeroSection = ({ currentUser }) => {
     const [fadeInLeftRef, fadeInLeft] = useFadeInLeftAnimation();
     const [fadeInRightRef, fadeInRight] = useFadeInRightAnimation();
     const [fadeInUpRef, fadeInUpAnimation] = useFadeInUpAnimation();
@@ -34,9 +34,15 @@ const HomeHeroSection = () => {
                         <button className="btn btn-sm btn-outline-secondary text-orange-6 border-orange-6 shadow-xl hover:text-orange-2 hover:bg-orange-6 mx-2">
                             Play Video
                         </button>
-                        <button className="btn btn-sm btn-secondary bg-orange-6 shadow-xl hover:bg-orange-2 hover:text-orange-6 mx-2">
-                            Signup
-                        </button>
+                        {
+                            !currentUser && (
+                                <Link to='/signup' >
+                                    <button className="btn btn-sm btn-secondary bg-orange-6 shadow-xl hover:bg-orange-2 hover:text-orange-6 mx-2">
+                                        Join Us
+                                    </button>
+                                </Link>
+                            )
+                        }
                     </div>
                     <div className="flex mt-10 items-end">
                         <div className='my-auto p-2 animate-bounce border-2 border-orange-5 rounded-full'>
@@ -50,7 +56,10 @@ const HomeHeroSection = () => {
                     ref={fadeInLeftRef}
                     style={fadeInLeft}
                 >
-                    <img src={HeroImg} alt="" className='max-h-dvh' />
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Fhero-main.png?alt=media&token=4c0fb10f-01ef-4c89-8307-96de0ddb03e5"
+                        alt=""
+                        className='max-h-dvh' />
                 </animated.div>
             </div>
             <animated.div
@@ -58,10 +67,10 @@ const HomeHeroSection = () => {
                 ref={fadeInUpRef}
                 style={fadeInUpAnimation}
             >
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='350 ' text='Project completed' />
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='325 ' text='Project Running' />
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='150 ' text='Happy clients' />
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='60 ' text='Services' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='60 ' text='Project completed' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='25 ' text='Project Running' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='50 ' text='Happy clients' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='40 ' text='Services' />
             </animated.div>
         </div>
     )

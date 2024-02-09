@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useSound from 'use-sound';
+import { useNavigate } from 'react-router-dom';
 
-// import { useAuth } from '../../context/AuthContext.js'
+import useEmailAuth from '../../hooks/auth/useEmailAuth'
 import ScrollProgressBar from '../progress-bar/ScrollProgress';
+import CartModal from '../modal/cart'
 
-// import { RxAvatar } from "react-icons/rx";
-import { MdOutlineContacts } from "react-icons/md";
+import { RxAvatar } from "react-icons/rx";
+import { MdOutlineContacts, MdKeyboardArrowDown } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 import { PiArrowLineLeftBold } from "react-icons/pi";
 import { FaHome, FaRegBuilding } from "react-icons/fa";
-import { GrServices, GrArticle } from "react-icons/gr";
+import { GrServices } from "react-icons/gr";
 
-import FullLogo from '../../assests/images/full-logo.png';
 import PageFlipSound from '../../assests/sound/page-flip.mp3'
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
-    // const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation();
+
     const location = useLocation();
-    // const { currentUser } = useAuth()
+    const navigate = useNavigate();
+
+    const { currentUser, handleSignOut } = useEmailAuth()
 
     const [play] = useSound(PageFlipSound);
 
@@ -28,6 +31,15 @@ const Navbar = () => {
         const scrollPosition = window.scrollY;
         setSticky(scrollPosition > 200);
     };
+
+    const handleLogout = async () => {
+        try {
+            await handleSignOut();
+            navigate('/login')
+        } catch (error) {
+            console.error("Error while logout: ", error);
+        }
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -56,11 +68,11 @@ const Navbar = () => {
             title: 'Services',
             icon: <GrServices />,
         },
-        {
-            path: '/insight',
-            title: 'Insights',
-            icon: <GrArticle />,
-        },
+        // {
+        //     path: '/insight',
+        //     title: 'Insights',
+        //     icon: <GrArticle />,
+        // },
         {
             path: '/about',
             title: 'AboutUs',
@@ -84,7 +96,11 @@ const Navbar = () => {
             <ScrollProgressBar />
             <div className="navbar-start">
                 <Link to="/" className="navbar-item max-w-40">
-                    <img src={FullLogo} alt="Brnadladder" />
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Ffull-logo.png?alt=media&token=5a963339-c8d7-42f1-9b21-fc29358196e6"
+                        alt="Brnadladder"
+                        loading='lazy'
+                    />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -107,19 +123,32 @@ const Navbar = () => {
                 }
             </div>
             <div className="navbar-end">
-                {/* {currentUser &&
+
+                {
                     currentUser ? (
-                    <span className="badge badge-outline-primary">
-                        <RxAvatar />
-                    </span>
-                ) : (
-                    <Link to='/signup'> */}
-                <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
-                    SignIn
-                </button>
-                {/* </Link>
-                )
-                } */}
+                        <div className="dropdown dropdown-hover">
+                            <label className="" tabIndex="0">
+                                <div className="border-2 border-none p-2 rounded-full hover:bg-orange-10 hover:text-orange-1 shadow-2xl transition-all duration-300 cursor-pointer flex">
+                                    <RxAvatar className='text-2xl' />
+                                    <MdKeyboardArrowDown className='my-auto text-xl' />
+                                </div>
+                            </label>
+                            <div className="dropdown-menu bg-white text-orange-10 space-y-2">
+                                <label className="cursor-pointer dropdown-item text-sm hover:bg-orange-1" htmlFor="modal-3">My Bag</label>
+                                <Link to='/services' className="dropdown-item text-sm hover:bg-orange-1">Services</Link>
+                                {/* <div className="divider"></div> */}
+                                <button className="btn btn-outline-error" onClick={handleLogout} >Logout</button>
+                            </div>
+                            <CartModal />
+                        </div>
+                    ) : (
+                        <Link to='/login'>
+                            <button className="cursor-pointer btn btn-outline text-orange-2 border-none bg-orange-6 shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-2 hover:text-orange-6 focus:text-orange-7">
+                                SignIn
+                            </button>
+                        </Link>
+                    )
+                }
             </div>
 
             {/* Responsive Menu */}
@@ -132,7 +161,11 @@ const Navbar = () => {
             <div className="drawer bg-orange-2">
                 <div className="drawer-content h-full min-w-100">
                     <div className="flex justify-between">
-                        <img src={FullLogo} alt="" className='max-w-52' />
+                        <img
+                            src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Ffull-logo.png?alt=media&token=5a963339-c8d7-42f1-9b21-fc29358196e6"
+                            alt="BrandLadder"
+                            className='max-w-52'
+                        />
                         <label htmlFor="drawer-left" className="btn btn-xl btn-circle btn-ghost text-orange-7">
                             <PiArrowLineLeftBold />
                         </label>

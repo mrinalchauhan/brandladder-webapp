@@ -17,7 +17,7 @@ const FeatureCard = ({ icon, count, text }) => {
                     </span>
                 </div>
                 <h2 className="card-header mx-auto font-bold text-orange-9">
-                    {inView && <CountUp start={0} end={count} duration={2} />}
+                    {inView && <CountUp start={0} end={count} duration={4} />}
                     {' +'}
                 </h2>
                 <p className="text-black font-semibold text-orange-7">{text}</p>

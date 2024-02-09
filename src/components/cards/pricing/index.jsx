@@ -1,10 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import SelectPlanModal from '../../modal/selectPlan';
+import useEmailAuth from '../../../hooks/auth/useEmailAuth';
 
 import { GoDotFill } from "react-icons/go";
 import { FaRegDotCircle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
-export const PricingCard = ({ palnType, price, featureList, prime = false }) => {
+export const PricingCard = ({ planType, monthlyPrice, featureList, prime = false }) => {
+
+    const { currentUser } = useEmailAuth();
 
     return (
         <div className="mx-auto">
@@ -12,26 +18,34 @@ export const PricingCard = ({ palnType, price, featureList, prime = false }) => 
                 <div className="my-2">
                     <h2 className="text-xl font-semibold flex">
                         <FaRegDotCircle className='my-auto mx-1' />
-                        {palnType}
+                        {planType}
                     </h2>
-                    <p className="my-2">
-                        <strong className=""> {price}$ </strong>
+                    <p className="my-2 text-2xl">
+                        <strong className=""> Rs {monthlyPrice} </strong>
                         <span className="text-sm font-medium text-gray-700">/month</span>
                     </p>
 
-                    <p className="text-black my-2 font-bold">
-                        billed annually <br />
-                        $17 billed monthly
-                    </p>
+                    {
+                        currentUser ? (
+                            <label
+                                className="btn w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-semibold text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
+                                htmlFor="modal-1"
+                            >
+                                Get Plan
+                            </label>
+                        ) : (
+                            <Link to='/login' >
+                                <button
+                                    className="w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-semibold text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
+                                >
+                                    Login To Get Plan
+                                </button>
+                            </Link>
+                        )
+                    }
 
-
-                    <button
-                        className="w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-semibold text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
-                    >
-                        Get Plan
-                    </button>
                 </div>
-
+                <SelectPlanModal title={planType} />
                 <div className="my-2">
                     <p className="text-lg font-medium  sm:text-xl">What's included:</p>
 
@@ -53,11 +67,11 @@ export const PricingCard = ({ palnType, price, featureList, prime = false }) => 
     );
 };
 
-PricingCard.propTypes = {
-    palnType: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    featureList: PropTypes.array.isRequired,
-    prime: PropTypes.string.isRequired,
-}
+// PricingCard.propTypes = {
+//     planType: PropTypes.string.isRequired,
+//     monthlyPrice: PropTypes.string.isRequired,
+//     featureList: PropTypes.array.isRequired,
+//     prime: PropTypes.bool.isRequired,
+// }
 
-export default PricingCard
+export default PricingCard;

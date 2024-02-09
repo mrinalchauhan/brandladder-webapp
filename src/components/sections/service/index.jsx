@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import ServiceCard from '../../cards/service';
 import OutlineButton from '../../buttons/outline';
@@ -24,11 +24,11 @@ const ServiceSection = ({ serviceList, sectionTitle }) => {
                                     return (
                                         <ServiceCard
                                             key={index}
-                                            image='https://source.unsplash.com/random/300x200'
-                                            title={data.cardTitle}
-                                            desc={data.cardDesc}
-                                            pricing={data.cardPricing}
-                                            link={data.cardLink}
+                                            image={data.img}
+                                            title={data.title}
+                                            desc={data.desc}
+                                            pricing={data.price}
+                                            trending={data.trending}
                                         />
                                     )
                                 })
@@ -41,9 +41,9 @@ const ServiceSection = ({ serviceList, sectionTitle }) => {
     )
 }
 
-ServiceSection.propTypes = {
-    serviceList: PropTypes.array.isRequired,
-    sectionTitle: PropTypes.string.isRequired
-}
+// ServiceSection.propTypes = {
+//     serviceList: PropTypes.array.isRequired,
+//     sectionTitle: PropTypes.string.isRequired
+// }
 
 export default ServiceSection

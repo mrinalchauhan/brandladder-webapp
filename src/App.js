@@ -1,3 +1,5 @@
+import { Toaster } from 'react-hot-toast';
+
 import Navigations from './navigations';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
@@ -11,6 +13,7 @@ function App() {
         <Navigations />
       </div>
       <Footer />
+      <Toaster />
     </div>
   );
 }

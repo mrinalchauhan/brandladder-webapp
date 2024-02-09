@@ -11,13 +11,13 @@ const AuthFrame = ({ children, topic }) => {
 
     return (
         <section className="pb-6 flex items-center justify-center bg-orange-2">
-            <div className="bg-white p-8 rounded-lg shadow-md w-full sm:max-w-md">
+            <div className="bg-white p-8 rounded-lg shadow-md w-full sm:max-w-md ">
                 <div className="flex justify-between mb-4">
                     <div className='flex'>
                         <Link to='/' className='my-auto'>
                             <MdArrowBackIosNew className='my-auto text-2xl text-orange-7' />
                         </Link>
-                        <h2 className="text-3xl font-semibold text-center text-orange-7">{topic}</h2>
+                        <h2 className="text-2xl font-semibold text-center text-orange-7">{topic}</h2>
                     </div>
                     <div className='space-x-2'>
                         <SyncLoader

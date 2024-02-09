@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { useFirestore } from '../../context/FirestoreContext';
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation'
 import useSmoothScroll from '../../hooks/general/useSmoothScroll';
 
@@ -9,49 +10,71 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandFacebook } from "react-icons/tb";
 import { MdOutlineMailOutline } from "react-icons/md";
-// import { BsTwitterX } from "react-icons/bs";
 
 import TeamCard from '../../components/cards/team';
 
-import AboutImg from '../../assests/images/feature-img/about-4.jpg'
-import Founder from '../../assests/images/feature-img/founder-img.png'
-
 const About = () => {
     useSmoothScroll();
+    const [teamData, setTeamData] = useState();
 
+    const { getTeamData } = useFirestore();
     const bounceAnimationProps = useBounceAnimation();
+
+    useEffect(() => {
+
+        const fetchTeamData = async () => {
+            try {
+                const res = await getTeamData('team');
+                setTeamData(res);
+            } catch (error) {
+                console.log('Error while getting team data: ', error);
+            }
+        }
+
+        fetchTeamData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <motion.section {...bounceAnimationProps} className='bg-orange-2'>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-5 py-10">
                 <aside>
-                    <h1 class='text-black text-5xl font-bold'>
-                        We are here to make your project easier
+                    <h1 className='text-black text-5xl font-bold'>
+                        We are here to make your journey flawless !
                     </h1>
                 </aside>
-                <aside class="mt-auto">
-                    <p class='my-auto text-sm text-black'>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                <aside className="mt-auto">
+                    <p className='my-auto text-sm text-gray-600'>
+                        Brand ladder: where ambition meets creativity. Your trusted partner to help you overcome any obstacles in the digital landscape. Meet our committed founder and team, dedicated in establishing your success.
                     </p>
                 </aside>
             </div>
 
 
             <div className="mx-auto my-auto">
-                <img src={AboutImg} alt="" className='min-w-full rounded' />
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Fabout-4.jpg?alt=media&token=3f0924f0-7f36-4522-8241-73f3afe42c26"
+                    alt="BrandLadder"
+                    className='min-w-full rounded'
+                    loading='lazy'
+                />
             </div>
 
             <div className="my-8">
                 <h1 className='text-center text-3xl md:text-5xl text-black font-semibold md:font-bold'>Our Founder</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 p-2">
-                    <img src={Founder} alt="" />
+                    <img
+                        src='https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/team%2Ffounder-img.png?alt=media&token=f47be2f1-df81-43a9-b457-a11177d1046d'
+                        alt="Dr. Uday Kiran"
+                        loading='lazy'
+                    />
                     <aside className='text-black flex flex-col gap-10 my-auto'>
                         <div>
                             <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
                             <small>Founder of BRANDLADDER</small>
                         </div>
                         <p className='text-sm md:text-lg'>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Meet Dr. Uday Kiran, the backbone and visionary of Brand ladder. Aceing both the fields as a doctor and as an entrepreneur, he began his journey at the age of 17. Over the past 7 years he has worked relentlessly on his skills, studying the market and gracing multiple successful ventures. With his keen observation skills he recognized the struggles of budding entrepreneurs. This lead to Brand Ladder, with the aim to drive businesses for growth and sustainability. At Brand Ladder each member is a bullet of the industry turned into working machines by him. The mission is clear and that is to empower business in every domain to achieve greater heights. With the devotion and dedication he possesses, Brand ladder is ready to make a profound impact.
                         </p>
                         <div className='flex justify-between w-full md:w-2/3 border border-orange-10 rounded-3xl px-6 py-4'>
                             <Link to='/' target='_blank' >
@@ -60,7 +83,7 @@ const About = () => {
                             <Link to='https://www.instagram.com/doc_udaykiran/' target='_blank' >
                                 <FaInstagram className='text-3xl text-orange-10 font-semibold' />
                             </Link>
-                            <Link to='/' target='_blank' >
+                            <Link to='https://www.facebook.com/profile.php?id=61556208665332&mibextid=ZbWKwL' target='_blank' >
                                 <TbBrandFacebook className='text-3xl text-orange-10 font-semibold' />
                             </Link>
                             <Link to='https://www.linkedin.com/in/dr-uday-kiran-472733192/' target='_blank' >
@@ -73,49 +96,23 @@ const About = () => {
 
             <div className='p-10'>
                 <h2>Meet Our Team</h2>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <TeamCard
-                        image={Founder}
-                        name='Founder'
-                        designation='Founder'
-                        twitterLink='/Founder'
-                        emailLink='/Founder'
-                        instaLink='/Founder'
-                        facebookLink='/Founder'
-                        linkedinLink='/Founder'
-                    />
-                    <TeamCard
-                        image={Founder}
-                        name='Founder'
-                        designation='Founder'
-                        twitterLink='/Founder'
-                        emailLink='/Founder'
-                        instaLink='/Founder'
-                        facebookLink='/Founder'
-                        linkedinLink='/Founder'
-                    />
-                    <TeamCard
-                        image={Founder}
-                        name='Founder'
-                        designation='Founder'
-                        twitterLink='/Founder'
-                        emailLink='/Founder'
-                        instaLink='/Founder'
-                        facebookLink='/Founder'
-                        linkedinLink='/Founder'
-                    />
-                    <TeamCard
-                        image={Founder}
-                        name='Founder'
-                        designation='Founder'
-                        twitterLink='/Founder'
-                        emailLink='/Founder'
-                        instaLink='/Founder'
-                        facebookLink='/Founder'
-                        linkedinLink='/Founder'
-                    />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {teamData?.map((member) => (
+                        <TeamCard
+                            key={member.id}
+                            image={member.img}
+                            name={member.name}
+                            designation={member.designation}
+                            twitterLink={member.twitter}
+                            emailLink={member.email}
+                            instaLink={member.insta}
+                            facebookLink={member.facebook}
+                            linkedinLink={member.linkedin}
+                        />
+                    ))}
                 </div>
             </div>
+
         </motion.section>
     )
 }

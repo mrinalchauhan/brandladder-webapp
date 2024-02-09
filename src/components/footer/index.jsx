@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 import { VscSignIn } from "react-icons/vsc";
 import { IoPricetagsOutline, IoLocationOutline } from "react-icons/io5";
 import { FaRegBuilding, FaLinkedinIn, FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
-import { GrServices, GrArticle } from "react-icons/gr";
+import { GrServices, GrContactInfo } from "react-icons/gr";
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
-
-import Logo1 from '../../assests/images/full-logo.png'
 
 const Footer = () => {
 
@@ -58,7 +56,7 @@ const Footer = () => {
                             title="Company"
                             className="inline-flex items-center"
                         >
-                            <img src={Logo1} alt="brandladder" />
+                            <img src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Ffull-logo.png?alt=media&token=5a963339-c8d7-42f1-9b21-fc29358196e6" alt="brandladder" />
                         </Link>
                         <div className="mt-6 lg:max-w-sm">
                             <h4 className="text-gray-800 font-semibold text-xl">
@@ -75,10 +73,10 @@ const Footer = () => {
                         </span>
                         <div className="flex flex-col mt-1 space-x-3">
                             <ul>
-                                <Link to='/insight' className='my-2 flex link text-orange-10 transition-all ease-in-out duration-300 hover:text-orange-7'>
+                                {/* <Link to='/insight' className='my-2 flex link text-orange-10 transition-all ease-in-out duration-300 hover:text-orange-7'>
                                     <GrArticle className='my-auto mx-2' />
                                     <li>Insight</li>
-                                </Link>
+                                </Link> */}
                                 <Link to='/about' className='my-2 flex link text-orange-10 transition-all ease-in-out duration-300 hover:text-orange-7'>
                                     <FaRegBuilding className='my-auto mx-2' />
                                     <li>About us</li>
@@ -91,9 +89,13 @@ const Footer = () => {
                                     <GrServices className='my-auto mx-2' />
                                     <li>Our Services</li>
                                 </Link>
+                                <Link to='/contact' className='my-2 flex link text-orange-10 transition-all ease-in-out duration-300 hover:text-orange-7'>
+                                    <GrContactInfo className='my-auto mx-2' />
+                                    <li>Contact Us</li>
+                                </Link>
                                 <Link to='/signup' className='my-2 flex link text-orange-10 transition-all ease-in-out duration-300 hover:text-orange-7'>
                                     <VscSignIn className='my-auto mx-2' />
-                                    <li>Sign in</li>
+                                    <li>Join Us</li>
                                 </Link>
                             </ul>
                         </div>

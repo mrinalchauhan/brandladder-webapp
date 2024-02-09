@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { useFirestore } from '../../context/FirestoreContext';
+import useEmailAuth from '../../hooks/auth/useEmailAuth';
+import useGoogleAuth from '../../hooks/auth/useGoogleAuth';
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
+
+import { showSuccessToast, showErrorToast } from '../../components/tosters'
 import AuthFrame from '../../components/frames/auth'
 
-import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import { FaGoogle } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { BsCaretRight } from "react-icons/bs";
 
@@ -19,6 +24,7 @@ const SignupPage = () => {
     const [confirmPass, setConfirmPass] = useState('')
     const [showPass, setShowPass] = useState(false);
     const [passwordsMatch, setPasswordsMatch] = useState(false);
+    const [authStateFetched, setAuthStateFetched] = useState(false);
 
     const bounceAnimationProps = useBounceAnimation();
 
@@ -29,35 +35,86 @@ const SignupPage = () => {
         setShowPass(!showPass);
     }
 
-    const handleSignin = (e) => {
-        e.preventDefault();
+    const naviagte = useNavigate();
+    const { uploadUserData } = useFirestore();
+    const { handleEmailSignIn, currentUser } = useEmailAuth();
+    const { handleGoogleSignIn } = useGoogleAuth();
+
+    const handleEmailSignin = async () => {
         try {
-            console.log('login')
+            await handleEmailSignIn(email, password);
+            showSuccessToast('Signup Successfully')
         } catch (error) {
-            console.error("error while loggin: ", error);
+            console.error('Error while email Signup: ', error);
+            showErrorToast("Opps!! , Something Went Wrong")
+            return; // Exit early if there's an error
+        }
+
+        if (!authStateFetched) {
+            setTimeout(() => {
+                if (currentUser) {
+                    handleUserDataUpload(); // Call handleUserDataUpload only after currentUser is available
+                }
+            }, 2000);
+        } else {
+            handleUserDataUpload(); // Call handleUserDataUpload immediately if auth state is already fetched
+        }
+    }
+
+    const handleUserDataUpload = async () => {
+        const data = {
+            name: name,
+            email: email,
+            contact: phone,
+        };
+
+        try {
+            await uploadUserData(currentUser?.uid, 'userDtls', data);
+            showSuccessToast('Signup Successfully')
+            naviagte('/')
+        } catch (error) {
+            console.error('Error While uploading user data : ', error);
+            showErrorToast("Opps!! , Something Went Wrong")
+        }
+    }
+
+    const googleSignIn = async () => {
+        try {
+            await handleGoogleSignIn();
+        } catch (error) {
+            console.error("error while google signin: ", error);
+            showErrorToast("Opps!! , Something Went Wrong")
         }
     }
 
     useEffect(() => {
+
+        if (currentUser) {
+            setAuthStateFetched(true);
+        }
+
+        if (currentUser !== null) {
+            naviagte('/');
+        }
+
         setPasswordsMatch(password === confirmPass);
-    }, [password, confirmPass]);
+    }, [password, confirmPass, currentUser, naviagte]);
 
     return (
-        <AuthFrame topic='Signin' >
+        <AuthFrame topic='SignUp' >
             <motion.section {...bounceAnimationProps} >
-
                 <div className="flex justify-center space-x-10">
-                    <button className='btn btn-lg btn-outline text-orange-10 border-orange-10 shadow-lg hover:border-orange-10 hover:shadow-2xl hover:bg-orange-10 hover:text-orange-1 '>
+                    <button
+                        className='btn btn-lg btn-outline text-orange-10 border-orange-10 shadow-lg hover:border-orange-10 hover:shadow-2xl hover:bg-orange-10 hover:text-orange-1'
+                        onClick={googleSignIn}
+                    >
                         <FaGoogle className='text-2xl' />
-                    </button>
-                    <button className='btn btn-lg btn-outline text-orange-10 border-orange-10 shadow-lg hover:border-orange-10 hover:shadow-2xl hover:bg-orange-10 hover:text-orange-1'>
-                        <FaFacebook className='text-2xl' />
                     </button>
                 </div>
 
                 <div className="divider divider-horizontal">OR</div>
 
-                <form className="space-y-4">
+                <div className="space-y-4">
                     <div>
                         <input
                             className="input-ghost border-inherit text-orange-10 max-w-full bg-white focus:border-orange-5 input"
@@ -112,14 +169,13 @@ const SignupPage = () => {
                     </div>
                     <div>
                         <button
-                            type='submit'
-                            onClick={handleSignin}
+                            onClick={handleEmailSignin}
                             className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
-                            Signin
+                            SignIn
                         </button>
                     </div>
-                </form>
-                <small className='mt-4' >Already Having Account ? <Link to='/login' className='link link-primary' > Login </Link> </small>
+                </div>
+                <small className='mt-4' >Already Having Account ? <Link to='/login' className='link link-primary' > Signin </Link> </small>
 
             </motion.section>
         </AuthFrame>

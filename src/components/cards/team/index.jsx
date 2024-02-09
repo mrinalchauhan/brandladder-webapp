@@ -12,29 +12,49 @@ const TeamCard = ({ image, name, designation, twitterLink, emailLink, instaLink,
         <div className='card p-6 bg-inherit shadow-none'>
             <div className="card-content">
                 <div className="grid grid-cols-5 gap-0">
-                    <div className="w-48 h-64 col-span-4 overflow-hidden image-container">
-                        <img src={image} alt="" className='h-full w-full ' />
+                    <div className="w-full h-64 md:h-80 col-span-4 overflow-hidden image-container">
+                        <img src={image} alt={name} loading="lazy" className='h-full w-full' />
                     </div>
                     <div className="col-span-1 flex flex-row">
                         <div className='flex flex-col justify-end items-end'>
                             <div className="divider divider-vertical h-20 m-0"></div>
                         </div>
                         <div className='flex flex-col justify-end items-start space-y-4'>
-                            <Link to={twitterLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
-                                <BsTwitterX />
-                            </Link>
-                            <Link to={emailLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
-                                <MdOutlineMailOutline />
-                            </Link>
-                            <Link to={instaLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
-                                <FaInstagram />
-                            </Link>
-                            <Link to={facebookLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
-                                <TbBrandFacebook />
-                            </Link>
-                            <Link to={linkedinLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
-                                <FaLinkedinIn />
-                            </Link>
+                            {
+                                twitterLink && (
+                                    <Link to={twitterLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
+                                        <BsTwitterX />
+                                    </Link>
+                                )
+                            }
+                            {
+                                emailLink && (
+                                    <Link to={emailLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
+                                        <MdOutlineMailOutline />
+                                    </Link>
+                                )
+                            }
+                            {
+                                instaLink && (
+                                    <Link to={instaLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
+                                        <FaInstagram />
+                                    </Link>
+                                )
+                            }
+                            {
+                                facebookLink && (
+                                    <Link to={facebookLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
+                                        <TbBrandFacebook />
+                                    </Link>
+                                )
+                            }
+                            {
+                                linkedinLink && (
+                                    <Link to={linkedinLink} className='text-gray-500 shadow-2xl transition-all ease-in-out duration-300 hover:text-gray-800'>
+                                        <FaLinkedinIn />
+                                    </Link>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

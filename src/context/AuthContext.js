@@ -5,10 +5,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    GithubAuthProvider,
     onAuthStateChanged,
     signOut,
-    signInWithPopup
+    signInWithPopup,
+    // updateProfile,
 } from 'firebase/auth';
 import "firebase/app";
 
@@ -19,24 +19,32 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    let [currentUser, setCurrentUser] = useState(null);
     const [error, setError] = useState(null);
 
     const clearError = () => setError(null);
 
     // create new user
-    const signUp = async (email, password) => {
+    const signIn = async (email, password, username, phoneNumber) => {
         try {
+            // const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             await createUserWithEmailAndPassword(auth, email, password);
 
+            // await updateProfile(userCredential.user, {
+            //     displayName: username,
+            //     phoneNumber: phoneNumber
+            // });
+
+            clearError();
         } catch (error) {
             setError(error.message);
+            console.log('Error while creating new user: ', error)
         }
     };
 
-    // email signin
-    const signIn = async (email, password) => {
+
+    // email signup
+    const signUp = async (email, password) => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             clearError();
@@ -56,21 +64,11 @@ export function AuthProvider({ children }) {
         }
     };
 
-    // github signin
-    const signInWithGitHub = async () => {
-        const provider = new GithubAuthProvider();
-        try {
-            await signInWithPopup(auth, provider);
-            clearError();
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
     // signout
     const signOutUser = async () => {
         try {
             await signOut(auth);
+            setCurrentUser(null)
             clearError();
 
         } catch (error) {
@@ -81,19 +79,16 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
-            setLoading(false);
         });
 
         return unsubscribe;
     }, []);
-
 
     const value = {
         currentUser,
         signUp,
         signIn,
         signInWithGoogle,
-        signInWithGitHub,
         signOut: signOutUser,
         error,
         clearError,
@@ -101,7 +96,7 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
-            {!loading && children}
+            {children}
         </AuthContext.Provider>
     )
 }

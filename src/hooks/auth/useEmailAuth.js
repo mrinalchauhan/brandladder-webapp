@@ -2,7 +2,14 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 
 function useEmailAuth() {
-    const { currentUser, error, clearError, signUp, signIn, signOut } = useAuth();
+    const {
+        currentUser,
+        error,
+        clearError,
+        signUp,
+        signIn,
+        signOut,
+    } = useAuth();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
