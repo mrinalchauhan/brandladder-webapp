@@ -107,7 +107,7 @@ const Home = () => {
 
         handleUplaodUserData();
 
-    }, [currentUser, currentUser.uid, uploadUserData])
+    }, [currentUser, uploadUserData])
 
     return (
         <motion.div {...bounceAnimationProps} >
