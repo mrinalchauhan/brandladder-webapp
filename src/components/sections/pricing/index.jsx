@@ -12,12 +12,15 @@ import PricingCardY from '../../cards/pricing/Year'
 const Pricing = ({ featureList1, featureList2, featureList3 }) => {
     const [selectedTab, setSelectedTab] = useState('featureList1');
 
-    const [fadeInUpRef, fadeInUp] = useFadeInUpAnimation();
-    // const [fadeInUpRef, fadeInUp] = useFadeInUpAnimation();
-    const [fadeInLeftRef, fadeInLeft] = useFadeInLeftAnimation();
-    // const [fadeInLeftRef, fadeInLeft] = useFadeInLeftAnimation();
-    const [fadeInRightRef, fadeInRight] = useFadeInRightAnimation();
-    // const [fadeInRightRef, fadeInRight] = useFadeInRightAnimation();
+    const [fadeInUpRef1, fadeInUp1] = useFadeInUpAnimation();
+    const [fadeInUpRef2, fadeInUp2] = useFadeInUpAnimation();
+    const [fadeInUpRef3, fadeInUp3] = useFadeInUpAnimation();
+
+    const [fadeInLeftRef1, fadeInLeft1] = useFadeInLeftAnimation();
+    const [fadeInLeftRef2, fadeInLeft2] = useFadeInLeftAnimation();
+
+    const [fadeInRightRef1, fadeInRight1] = useFadeInRightAnimation();
+    const [fadeInRightRef2, fadeInRight2] = useFadeInRightAnimation();
 
     const handleTabChange = (tab) => {
         setSelectedTab(tab);
@@ -25,7 +28,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
 
     return (
         <section className='bg-orange-2 mb-10 py-10 lg:px-10 px-2 w-full'>
-            <div className="my-4" ref={fadeInUpRef} style={fadeInUp}>
+            <div className="my-4" ref={fadeInUpRef1} style={fadeInUp1}>
                 <PageHeader title='Pricing' />
             </div>
             <div className='text-center mb-10' >
@@ -51,8 +54,8 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                             <motion.div
                                 key="featureList1"
                                 className="my-auto"
-                                ref={fadeInRightRef}
-                                style={fadeInRight}
+                                ref={fadeInRightRef1}
+                                style={fadeInRight1}
                                 initial={{ opacity: 0, x: 100 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -100 }}
@@ -68,14 +71,14 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                             <motion.div
                                 key="featureList2"
                                 className="my-auto"
-                                ref={fadeInUpRef}
-                                style={fadeInUp}
+                                ref={fadeInUpRef2}
+                                style={fadeInUp2}
                                 initial={{ opacity: 0, y: 100 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -100 }}
                             >
                                 <PricingCard
-                                    planType='GROWTH ACCELERATORS'
+                                    planType='GROWTH ACCELERATOR'
                                     monthlyPrice='49000'
                                     usdPrice="700"
                                     featureList={featureList2}
@@ -85,8 +88,8 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                             <motion.div
                                 key="featureList3"
                                 className="my-auto"
-                                ref={fadeInLeftRef}
-                                style={fadeInLeft}
+                                ref={fadeInLeftRef1}
+                                style={fadeInLeft1}
                                 initial={{ opacity: 0, x: -100 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 100 }}
@@ -106,8 +109,8 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                             <motion.div
                                 key="featureList3"
                                 className="my-auto"
-                                ref={fadeInUpRef}
-                                style={fadeInUp}
+                                ref={fadeInLeftRef2}
+                                style={fadeInLeft2}
                                 initial={{ opacity: 0, x: -100 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 100 }}
@@ -124,8 +127,8 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                             <motion.div
                                 key="featureList2"
                                 className="my-auto"
-                                ref={fadeInUpRef}
-                                style={fadeInUp}
+                                ref={fadeInUpRef3}
+                                style={fadeInUp3}
                                 initial={{ opacity: 0, y: 100 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -100 }}
@@ -138,11 +141,12 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                                     prime={true}
                                 />
                             </motion.div>
+
                             <motion.div
                                 key="featureList1"
                                 className="my-auto"
-                                ref={fadeInUpRef}
-                                style={fadeInUp}
+                                ref={fadeInRightRef2}
+                                style={fadeInRight2}
                                 initial={{ opacity: 0, y: 100 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -100 }}
@@ -156,7 +160,6 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                                 />
                             </motion.div>
                         </>
-
                     )}
                 </AnimatePresence>
             </div>

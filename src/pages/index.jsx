@@ -13,6 +13,8 @@ import HomeHeroSection from '../components/sections/hero/home';
 import Pricing from '../components/sections/pricing';
 import HomeAboutSection from '../components/sections/about/home';
 
+import { digitalEssential, growthAcceleratr, dominanceSuit } from '../.data/plan-features'
+
 const Home = () => {
     useSmoothScroll();
 
@@ -59,38 +61,6 @@ const Home = () => {
     //     },
     // ]
 
-    const baseFeatureList = [
-        "Daily Designs(30 Posts and 4 reels)",
-        "Basic SEO",
-        "Basic Ads Campaign",
-        "Website Maintenance",
-        "Social Media Account Handling",
-        "4 AI video",
-        "Research And Development",
-    ]
-
-    const silverFeatureList = [
-        "All in Basic Plan",
-        "Advanced Level Google Ads Campaigns",
-        "Facebook Ads Campaigns",
-        "Local SEO",
-        "Medium Level SEO(10 Blogs and 2 Guest Posts Every Month",
-        "Growing Social Media Handles Organically",
-        "Video Production",
-        "Basic Email Marketing(With Existing Customers)",
-
-    ]
-
-    const goldFeatureList = [
-        "All in Sliver Plan",
-        "Full Fledge SEO",
-        "Full Fledge PPC and SMM, IN - APP Marketing",
-        "Youtube Marketing",
-        "Online Reputation Management",
-        "Social Media Optimisation",
-        "Lead Generation",
-    ]
-
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));
 
@@ -121,7 +91,11 @@ const Home = () => {
 
             <section className=''>
                 <div className="w-full h-20 md:h-32 bg-orange-2 rounded-tl-full rounded-tr-lg"></div>
-                <Pricing featureList1={baseFeatureList} featureList2={silverFeatureList} featureList3={goldFeatureList} />
+                <Pricing
+                    featureList1={digitalEssential}
+                    featureList2={growthAcceleratr}
+                    featureList3={dominanceSuit}
+                />
             </section>
 
             {/* <section className='my-5'>

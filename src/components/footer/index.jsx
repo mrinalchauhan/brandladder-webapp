@@ -13,19 +13,19 @@ const Footer = () => {
 
     const socials = [
         {
-            link: '/',
+            link: 'https://www.linkedin.com/in/brand-ladder-3455952a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
             icon: <FaLinkedinIn />,
         },
         {
-            link: '/',
+            link: 'https://www.instagram.com/brand_ladder.co.in?igsh=cm9nbGU5OHVmYzAy',
             icon: <FaInstagram />,
         },
         {
-            link: '/',
+            link: 'whatsapp://send?phone=+919391523930',
             icon: <FaWhatsapp />,
         },
         {
-            link: '/',
+            link: 'https://www.facebook.com/profile.php?id=61556460775848&mibextid=ZbWKwL',
             icon: <FaFacebook />,
         },
     ]
@@ -59,6 +59,14 @@ const Footer = () => {
                             <img src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Ffull-logo.png?alt=media&token=5a963339-c8d7-42f1-9b21-fc29358196e6" alt="brandladder" />
                         </Link>
                         <div className="mt-6 lg:max-w-sm">
+                            <div className="flex flex-col items-center max-w-full mb-4 md:flex-row p-2">
+                                <input
+                                    className="input max-w-full text-orange-10 bg-white border-orange-5"
+                                    placeholder="Email"
+                                    type='email'
+                                />
+                                <button className="btn bg-orange-7">Subscribe</button>
+                            </div>
                             <h4 className="text-gray-800 font-semibold text-xl">
                                 Get weekly offers delivered to your inbox directly
                             </h4>
@@ -111,7 +119,9 @@ const Footer = () => {
                                         return (
                                             <div
                                                 key={index}
-                                                className='border-2 text-xl border-orange-3 border-solid rounded-full p-1 text-orange-10 mx-1 shadow-2xl transition duration-500 ease-in-out hover:text-orange-1 hover:bg-orange-5' >
+                                                className='border-2 text-xl border-orange-3 border-solid rounded-full p-1 text-orange-10 mx-1 shadow-2xl transition duration-500 ease-in-out hover:text-orange-1 hover:bg-orange-5'
+                                                target='_blank'
+                                            >
                                                 <Link to={data.link}>
                                                     {data.icon}
                                                 </Link>
