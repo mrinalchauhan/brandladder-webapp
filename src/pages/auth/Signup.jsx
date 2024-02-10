@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import { useFirestore } from '../../context/FirestoreContext';
 import useEmailAuth from '../../hooks/auth/useEmailAuth';
 import useGoogleAuth from '../../hooks/auth/useGoogleAuth';
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
@@ -24,7 +23,6 @@ const SignupPage = () => {
     const [confirmPass, setConfirmPass] = useState('')
     const [showPass, setShowPass] = useState(false);
     const [passwordsMatch, setPasswordsMatch] = useState(false);
-    const [authStateFetched, setAuthStateFetched] = useState(false);
 
     const bounceAnimationProps = useBounceAnimation();
 
@@ -36,46 +34,29 @@ const SignupPage = () => {
     }
 
     const naviagte = useNavigate();
-    const { uploadUserData } = useFirestore();
     const { handleEmailSignIn, currentUser } = useEmailAuth();
     const { handleGoogleSignIn } = useGoogleAuth();
 
     const handleEmailSignin = async () => {
         try {
             await handleEmailSignIn(email, password);
-            showSuccessToast('Signup Successfully')
+            storeDataLocally();
         } catch (error) {
             console.error('Error while email Signup: ', error);
             showErrorToast("Opps!! , Something Went Wrong")
             return; // Exit early if there's an error
         }
-
-        if (!authStateFetched) {
-            setTimeout(() => {
-                if (currentUser) {
-                    handleUserDataUpload(); // Call handleUserDataUpload only after currentUser is available
-                }
-            }, 2000);
-        } else {
-            handleUserDataUpload(); // Call handleUserDataUpload immediately if auth state is already fetched
-        }
     }
 
-    const handleUserDataUpload = async () => {
-        const data = {
+    const storeDataLocally = () => {
+        const userData = {
             name: name,
             email: email,
-            contact: phone,
+            phone: phone,
+            password: password
         };
-
-        try {
-            await uploadUserData(currentUser?.uid, 'userDtls', data);
-            showSuccessToast('Signup Successfully')
-            naviagte('/')
-        } catch (error) {
-            console.error('Error While uploading user data : ', error);
-            showErrorToast("Opps!! , Something Went Wrong")
-        }
+        localStorage.setItem('userData', JSON.stringify(userData));
+        // You might want to add error handling here for localStorage
     }
 
     const googleSignIn = async () => {
@@ -89,11 +70,8 @@ const SignupPage = () => {
 
     useEffect(() => {
 
-        if (currentUser) {
-            setAuthStateFetched(true);
-        }
-
         if (currentUser !== null) {
+            showSuccessToast('Signup Successfully')
             naviagte('/');
         }
 

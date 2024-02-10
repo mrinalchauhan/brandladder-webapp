@@ -30,22 +30,28 @@ const LoginPage = () => {
     }
 
     const handleEmailLogin = async () => {
-        try {
-            const res = await handleEmailSignUp(email, password);
-            console.log(res)
-            showSuccessToast('Login Successfully')
-            navigate('/')
 
-        } catch (error) {
-            console.error("Error while logging in:", error);
-            showErrorToast("Opps!! , Something Went Wrong")
+        if (email !== null && password !== null) {
+            try {
+                if (email != null) {
+                    showErrorToast("Email Is Required")
+                }
+                if (password != null) {
+                    showErrorToast("Email Is Required")
+                }
+
+                await handleEmailSignUp(email, password);
+
+            } catch (error) {
+                console.error("Error while logging in:", error);
+            }
         }
+
     }
 
     const handleGoogleLogin = async () => {
         try {
             await handleGoogleSignIn();
-            showSuccessToast('Login Successfully')
         } catch (error) {
             console.error('Error while Google signin:', error);
             showErrorToast("Opps!! , Something Went Wrong")
@@ -53,7 +59,8 @@ const LoginPage = () => {
     }
 
     useEffect(() => {
-        if (currentUser !== null) {
+        if (currentUser !== null && currentUser !== undefined) {
+            showSuccessToast('Login Successfully')
             navigate('/');
         }
     }, [currentUser, navigate]);

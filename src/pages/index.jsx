@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
 
 import useBounceAnimation from '../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../hooks/general/useSmoothScroll';
+import { useFirestore } from '../context/FirestoreContext';
 import { useAuth } from '../context/AuthContext'
 
 // import PageHeader from '../components/headers/page-header'
@@ -16,6 +17,7 @@ const Home = () => {
     useSmoothScroll();
 
     const { currentUser } = useAuth()
+    const { uploadUserData } = useFirestore()
     const bounceAnimationProps = useBounceAnimation();
 
     // const testemonialList = [
@@ -88,6 +90,23 @@ const Home = () => {
         "Social Media Optimisation",
         "Lead Generation",
     ]
+
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+
+        const handleUplaodUserData = async () => {
+            if (userData) {
+                try {
+                    await uploadUserData('users', currentUser.uid, userData)
+                } catch (error) {
+                    console.error("error while uploading user data: ", error)
+                }
+            }
+        }
+
+        handleUplaodUserData();
+
+    }, [])
 
     return (
         <motion.div {...bounceAnimationProps} >
