@@ -31,14 +31,15 @@ const LoginPage = () => {
 
     const handleEmailLogin = async () => {
 
+        if (email != null) {
+            showErrorToast("Email Is Required")
+        }
+        if (password != null) {
+            showErrorToast("Email Is Required")
+        }
+
         if (email !== null && password !== null) {
             try {
-                if (email != null) {
-                    showErrorToast("Email Is Required")
-                }
-                if (password != null) {
-                    showErrorToast("Email Is Required")
-                }
 
                 await handleEmailSignUp(email, password);
 
