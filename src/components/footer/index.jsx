@@ -58,14 +58,14 @@ const Footer = () => {
                         >
                             <img src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Ffull-logo.png?alt=media&token=5a963339-c8d7-42f1-9b21-fc29358196e6" alt="brandladder" />
                         </Link>
-                        <div className="mt-6 lg:max-w-sm">
-                            <div className="flex flex-col items-center max-w-full mb-4 md:flex-row p-2">
+                        <div className="my-6">
+                            <div className="grid grid-cols-3 gap-0">
                                 <input
-                                    className="input max-w-full text-orange-10 bg-white border-orange-5"
+                                    className="input max-w-full text-orange-10 bg-orange-1 border-orange-5 col-span-2 h-14"
                                     placeholder="Email"
                                     type='email'
                                 />
-                                <button className="btn bg-orange-7">Subscribe</button>
+                                <button className="btn bg-orange-7 col-span-1 h-14">Subscribe</button>
                             </div>
                             <h4 className="text-gray-800 font-semibold text-xl">
                                 Get weekly offers delivered to your inbox directly
