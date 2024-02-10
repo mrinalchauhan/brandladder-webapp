@@ -13,8 +13,11 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
     const [selectedTab, setSelectedTab] = useState('featureList1');
 
     const [fadeInUpRef, fadeInUp] = useFadeInUpAnimation();
+    // const [fadeInUpRef, fadeInUp] = useFadeInUpAnimation();
     const [fadeInLeftRef, fadeInLeft] = useFadeInLeftAnimation();
+    // const [fadeInLeftRef, fadeInLeft] = useFadeInLeftAnimation();
     const [fadeInRightRef, fadeInRight] = useFadeInRightAnimation();
+    // const [fadeInRightRef, fadeInRight] = useFadeInRightAnimation();
 
     const handleTabChange = (tab) => {
         setSelectedTab(tab);
@@ -101,7 +104,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                     {selectedTab === 'featureList2' && (
                         <>
                             <motion.div
-                                key="featureList2"
+                                key="featureList3"
                                 className="my-auto"
                                 ref={fadeInUpRef}
                                 style={fadeInUp}
@@ -136,7 +139,7 @@ const Pricing = ({ featureList1, featureList2, featureList3 }) => {
                                 />
                             </motion.div>
                             <motion.div
-                                key="featureList2"
+                                key="featureList1"
                                 className="my-auto"
                                 ref={fadeInUpRef}
                                 style={fadeInUp}
