@@ -39,8 +39,24 @@ const SignupPage = () => {
 
     const handleEmailSignin = async () => {
         try {
-            await handleEmailSignIn(email, password);
-            storeDataLocally();
+
+            if (name === null) {
+                showErrorToast("Name Is Required !!")
+            }
+            if (phone === null) {
+                showErrorToast("Contact Number Is Required !!")
+            }
+            if (password === null) {
+                showErrorToast("Password Is Required !!")
+            }
+            if (confirmPass === null) {
+                showErrorToast("Confirm Password Is Required !!")
+            }
+
+            if (name !== null && phone !== null && password !== null && confirmPass !== null) {
+                await handleEmailSignIn(email, password);
+                storeDataLocally();
+            }
         } catch (error) {
             console.error('Error while email Signup: ', error);
             showErrorToast("Opps!! , Something Went Wrong")

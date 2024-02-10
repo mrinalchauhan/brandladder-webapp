@@ -95,9 +95,10 @@ const Home = () => {
         const userData = JSON.parse(localStorage.getItem('userData'));
 
         const handleUplaodUserData = async () => {
-            if (userData) {
+            if (userData && currentUser !== null) {
                 try {
-                    await uploadUserData('users', currentUser.uid, userData)
+                    await uploadUserData('users', currentUser.uid, userData);
+                    localStorage.removeItem('userData');
                 } catch (error) {
                     console.error("error while uploading user data: ", error)
                 }
@@ -106,7 +107,7 @@ const Home = () => {
 
         handleUplaodUserData();
 
-    }, [])
+    }, [currentUser, uploadUserData])
 
     return (
         <motion.div {...bounceAnimationProps} >
