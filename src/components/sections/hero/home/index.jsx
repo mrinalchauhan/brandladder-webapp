@@ -27,7 +27,7 @@ const HomeHeroSection = ({ currentUser }) => {
                     style={fadeInRight}
                 >
                     <div>
-                        <small>........ Digital Agency</small>
+                        <small>........ IT and Marketing Company</small>
                     </div>
                     <TextReplacementAnimation />
                     <div className="flex">
