@@ -36,7 +36,8 @@ const HomeAboutSection = () => {
                         Digital Services
                     </h2>
                     <p className='text-gray-500'>
-                        We specialize in digital services that enhance your internet visibility. From smart marketing campaigns to bespoke content development, our team is dedicated to providing impactful solutions that enable you to connect with your audience and achieve your objectives.                    </p>
+                        We design services as per your needs. With the market flooding with digital services, we curate what your business needs, we know every business is unique in its own way and therefore needs its unique strategies. From expertly curated social strategies, and UI/UX to top-notch SEO. Brand Ladder is the one-stop solution for all your Digital marketing queries. Our approach is simple, writing your journey in a way that levels up your game in each segment. We have experts for each and every need of yours; upgrade your social media game, create content that resonates with your audience, lead generation, google ads, and meta ads; you name it and we have got it for you. With us, you are not just a client, but a part of our family. Experience growth like never before.
+                    </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />
                     </Link>
@@ -76,8 +77,7 @@ const HomeAboutSection = () => {
                         Technical Services
                     </h2>
                     <p className='text-gray-500'>
-                        Our techinical services include a wide range, including development, cloud solutions, and AI/ML. From developing custom software to establishing scalable cloud architectures and integrating advanced AI algorithms, our team provides unique solutions that are tailored to your digital success.
-
+                        We deliver solutions integrated with experience, we have professionals who deliver a set of comprehensive services tailored to meet your expectations, from engaging web development that reflects your brand’s identity to user-friendly web application development that enhances user experience. At Brand Ladder, we work to upgrade your digital landscape with our comprehensive technological services with AI/ML-driven innovations that boost your productivity, cloud solutions that aid your growth, and CI/CD pipeline solutions that optimize your development process. With our futuristic approach, we focus on page speed optimization and provide users with an engaging experience. Besides all this, we make sure you keep upgrading with our easily accessible maintenance services, so you are one step ahead all the time. Partner, with Brand Ladder and expand the technical horizon of your business with us.
                     </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />
@@ -94,8 +94,7 @@ const HomeAboutSection = () => {
                         CA And Finance Services
                     </h2>
                     <p className='text-gray-500'>
-                        We specialize in comprehensive accounting and finance services, providing experienced advice and solutions to help you improve your financial operations. From tax planning and compliance to financial analysis and consulting, our dedicated team ensures that your financial plans are strong, compliant, and aligned with your business goals for long-term growth and success.
-
+                        We have onboarded the best CA services with the help of top Chartered Accountants of India, providing you with a wide range of services. We understand how vital finances are and will make sure they are handled with accuracy and complete transparency. Our exceptional team of professionals will handle any part of the accounting, giving you precise information to make the best decision for your business. Further, we assist you with the seamless acquisition of labor licenses, FSSAI licenses, company and firm registration, and other necessary permits as well. We also specialize in providing net worth certificates, payroll management, digital signatures and so much more. You can rely on Brand Ladder to take care of your financial load while you focus on other activities of your business. Empower your financial growth with us today.
                     </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />

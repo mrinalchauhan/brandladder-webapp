@@ -63,7 +63,7 @@ const Contact = () => {
                                 <small>info@brandladder.co.in</small>
                             </div>
                         </aside>
-                        <aside className='flex justify-evenly items-center bg-white py-2 rounded-lg' >
+                        <aside className='flex justify-evenly items-center bg-white py-2 rounded-lg mb-5' >
                             <BiPhoneCall className='text-5xl' />
                             <div className="flex flex-col text-black">
                                 <h3 className='text-xl font-medium'>Contact No.</h3>

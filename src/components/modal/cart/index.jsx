@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { useFirestore } from '../../../context/FirestoreContext';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -9,12 +11,12 @@ const CardModal = () => {
 
     const [cartData, setCartData] = useState(null);
 
-    const { getDocumentData } = useFirestore();
+    const { getAllSubdocumentData } = useFirestore();
     const { currentUser } = useAuth()
 
     const handleGetCartData = async () => {
         try {
-            const res = await getDocumentData(currentUser.uid, 'orders')
+            const res = await getAllSubdocumentData('users', currentUser.uid, 'orders')
 
             setCartData(res);
 
@@ -27,6 +29,8 @@ const CardModal = () => {
         handleGetCartData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    console.log(cartData)
 
     return (
         <div>
@@ -41,7 +45,34 @@ const CardModal = () => {
                         <MdOutlineCancel />
                     </label>
                     <h2 className="text-xl">My Bag</h2>
+
                     <section>
+                        {
+                            cartData ? (
+                                cartData.map((item) => (
+                                    <div className="my-2" key={item.id}>
+                                        <CartCard
+                                            title={item.plan}
+                                            date={item.dateOfOrder.toDate().toLocaleDateString()}
+                                            orderId={item.id}
+                                        />
+                                    </div>
+                                ))
+                            ) : (
+                                <>
+                                    <h2>No Plan Selected</h2>
+                                    <Link to='/services' >
+                                        <button
+                                            className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
+                                            See All Services
+                                        </button>
+                                    </Link>
+                                </>
+                            )
+                        }
+                    </section>
+
+                    {/* <section>
                         {
                             cartData?.map((data, index) => {
                                 return (
@@ -54,7 +85,7 @@ const CardModal = () => {
                                 )
                             })
                         }
-                    </section>
+                    </section> */}
                 </div>
             </div>
         </div>

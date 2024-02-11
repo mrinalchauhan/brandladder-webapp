@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Wave from 'react-wavify'
 import { Link } from 'react-router-dom';
+
+import { useFirestore } from '../../context/FirestoreContext'
+import { showSuccessToast, showErrorToast } from '../../components/tosters'
 
 import { VscSignIn } from "react-icons/vsc";
 import { IoPricetagsOutline, IoLocationOutline } from "react-icons/io5";
@@ -10,6 +13,25 @@ import { AiTwotoneMail } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
 
 const Footer = () => {
+
+    const [email, setEmail] = useState('');
+
+    const { uploadEmptyDocument } = useFirestore();
+
+    const handleNewsLetter = async () => {
+        try {
+            if (email === null) {
+                showErrorToast("Email Is Required !!")
+            }
+            if (email !== null) {
+                await uploadEmptyDocument('newsletter', email)
+                showSuccessToast("You Have Subscribed To Our News Leetter !!")
+                setEmail('')
+            }
+        } catch (error) {
+            console.error('error handling news letter data : ', error)
+        }
+    }
 
     const socials = [
         {
@@ -64,8 +86,12 @@ const Footer = () => {
                                     className="input max-w-full text-orange-10 bg-orange-1 border-orange-5 col-span-2 h-14"
                                     placeholder="Email"
                                     type='email'
+                                    value={email}
+                                    onChange={(value) => { setEmail(value.target.value) }}
                                 />
-                                <button className="btn bg-orange-7 col-span-1 h-14">Subscribe</button>
+                                <button className="btn bg-orange-7 col-span-1 h-14" onClick={handleNewsLetter}>
+                                    Subscribe
+                                </button>
                             </div>
                             <h4 className="text-gray-800 font-semibold text-xl">
                                 Get weekly offers delivered to your inbox directly

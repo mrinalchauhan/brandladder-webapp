@@ -61,17 +61,23 @@ const About = () => {
             </div>
 
             <div className="my-8">
-                <h1 className='text-center text-3xl md:text-5xl text-black font-semibold md:font-bold'>Our Founder</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 p-2">
+                <h1 className='text-center my-6 text-3xl md:text-5xl text-black font-semibold md:font-bold'>
+                    Our Founder
+                </h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-2">
                     <img
-                        src='https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/team%2Ffounder-img.png?alt=media&token=f47be2f1-df81-43a9-b457-a11177d1046d'
+                        src='https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/team%2F1706971961993.jpg?alt=media&token=905e09bf-d68a-4edb-833a-eb0ef235e3b6'
                         alt="Dr. Uday Kiran"
                         loading='lazy'
                     />
                     <aside className='text-black flex flex-col gap-10 my-auto'>
                         <div>
-                            <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
-                            <small>Founder of BRANDLADDER</small>
+                            <h1 className='text-black text-4xl font-semibold'>
+                                Dr. Uday Kiran ( MBBS ,MD psychiatry resident )
+                            </h1>
+                            <small>
+                                Founder - Brandladder , Udbha
+                            </small>
                         </div>
                         <p className='text-sm md:text-lg'>
                             Meet Dr. Uday Kiran, the backbone and visionary of Brand ladder. Aceing both the fields as a doctor and as an entrepreneur, he began his journey at the age of 17. Over the past 7 years he has worked relentlessly on his skills, studying the market and gracing multiple successful ventures. With his keen observation skills he recognized the struggles of budding entrepreneurs. This lead to Brand Ladder, with the aim to drive businesses for growth and sustainability. At Brand Ladder each member is a bullet of the industry turned into working machines by him. The mission is clear and that is to empower business in every domain to achieve greater heights. With the devotion and dedication he possesses, Brand ladder is ready to make a profound impact.
