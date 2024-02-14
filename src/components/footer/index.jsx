@@ -20,10 +20,10 @@ const Footer = () => {
 
     const handleNewsLetter = async () => {
         try {
-            if (email === null) {
+            if (email === '') {
                 showErrorToast("Email Is Required !!")
             }
-            if (email !== null) {
+            if (email !== '') {
                 await uploadEmptyDocument('newsletter', email)
                 showSuccessToast("You Have Subscribed To Our News Leetter !!")
                 setEmail('')
@@ -88,6 +88,7 @@ const Footer = () => {
                                     type='email'
                                     value={email}
                                     onChange={(value) => { setEmail(value.target.value) }}
+                                    required
                                 />
                                 <button className="btn bg-orange-7 col-span-1 h-14" onClick={handleNewsLetter}>
                                     Subscribe

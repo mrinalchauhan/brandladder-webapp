@@ -67,8 +67,8 @@ const HomeHeroSection = ({ currentUser }) => {
                 ref={fadeInUpRef}
                 style={fadeInUpAnimation}
             >
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='60 ' text='Project completed' />
-                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='25 ' text='Project Running' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='60 ' text='Projects completed' />
+                <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='25 ' text='Projects Running' />
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='50 ' text='Happy clients' />
                 <FeatureCard icon={<HiOutlineClipboardDocumentList />} count='40 ' text='Services' />
             </animated.div>

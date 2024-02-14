@@ -5,7 +5,7 @@ import Insight from '../pages/Insight';
 import About from '../pages/about';
 import Contact from '../pages/contact';
 import Cart from '../pages/cart';
-import Career from '../pages/career'
+import Career from '../pages/career';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
 

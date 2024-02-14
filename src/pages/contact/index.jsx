@@ -5,17 +5,19 @@ import { useFirestore } from '../../context/FirestoreContext';
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
+import { MdOutlinePhone } from "react-icons/md";
 import { IoMailOutline } from "react-icons/io5";
-import { BiPhoneCall } from "react-icons/bi";
+
+import { showSuccessToast, showErrorToast } from '../../components/tosters'
 
 const Contact = () => {
     useSmoothScroll();
 
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
-    const [confirmPhone, setConfirmPhone] = useState();
-    const [msg, setMsg] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [confirmPhone, setConfirmPhone] = useState('');
+    const [msg, setMsg] = useState('');
 
     const { uploadUserData: sendMessage } = useFirestore();
 
@@ -31,16 +33,39 @@ const Contact = () => {
         }
 
         try {
-            await sendMessage('contactMsg', name, data);
 
-            setName();
-            setEmail();
-            setPhone();
-            setConfirmPhone();
-            setMsg();
+            if (name === '') {
+                showErrorToast('Name is required !!')
+            }
+            if (email === '') {
+                showErrorToast('Email is required !!')
+            }
+            if (phone === '') {
+                showErrorToast('Phone no. is required !!')
+            }
+            if (msg === '') {
+                showErrorToast('Message is required !!')
+            }
+            if (phone !== confirmPhone) {
+                showErrorToast('Phone No is not matching !!')
+            }
+
+            if (name !== '' && email !== '' && phone !== '' && msg !== '') {
+                await sendMessage('contactMsg', name, data);
+
+                showSuccessToast('We will be in touch soon')
+
+                setName();
+                setEmail();
+                setPhone();
+                setConfirmPhone();
+                setMsg();
+            }
+
 
         } catch (error) {
             console.error('Error while sending message: ', error);
+            showErrorToast('Something went wrong!! Our Try again later')
         }
     }
 
@@ -55,19 +80,19 @@ const Contact = () => {
                         className='mb-5 rounded-lg'
                         loading='lazy'
                     />
-                    <div className="flex flex-col justify-between rounded-xl p-10 bg-orange-3">
-                        <aside className='flex justify-evenly items-center bg-white py-2 rounded-lg mb-5' >
-                            <IoMailOutline className='text-5xl' />
-                            <div className="flex flex-col text-black">
+                    <div className="flex flex-col space-y-4 justify-between rounded-xl p-10 bg-orange-3">
+                        <aside className='grid grid-cols-5 gap-4'>
+                            <IoMailOutline className='text-5xl col-span-2 text-center mx-auto' />
+                            <div className="flex flex-col text-black col-span-3">
                                 <h3 className='text-xl font-medium'>Email</h3>
                                 <small>info@brandladder.co.in</small>
                             </div>
                         </aside>
-                        <aside className='flex justify-evenly items-center bg-white py-2 rounded-lg mb-5' >
-                            <BiPhoneCall className='text-5xl' />
-                            <div className="flex flex-col text-black">
+                        <aside className='grid grid-cols-5 gap-4'>
+                            <MdOutlinePhone className='text-5xl col-span-2 mx-auto' />
+                            <div className="flex flex-col text-black col-span-3">
                                 <h3 className='text-xl font-medium'>Contact No.</h3>
-                                <small>0987654321</small>
+                                <small>+91 9391523930</small>
                             </div>
                         </aside>
                     </div>

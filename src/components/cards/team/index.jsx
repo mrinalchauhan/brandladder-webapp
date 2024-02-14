@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import { FaLinkedinIn } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa6';
 import { TbBrandFacebook } from 'react-icons/tb';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { BsTwitterX } from 'react-icons/bs';
 
+import useFadeInUpAnimation from '../../../hooks/animations/useFadeInUpAnimation';
+
 const TeamCard = ({ image, name, designation, twitterLink, emailLink, instaLink, facebookLink, linkedinLink }) => {
+
+    const [fadeInUpRef, fadeInUp] = useFadeInUpAnimation();
+
     const handleEmailClick = () => {
         window.location.href = `mailto:${emailLink}`;
     };
 
     return (
-        <div className="card p-6 bg-inherit shadow-none">
+        <motion.div className="card p-6 bg-inherit shadow-none" style={fadeInUp} ref={fadeInUpRef} >
             <div className="card-content">
                 <div className="grid grid-cols-5 gap-0">
                     <div className="w-full h-64 md:h-80 col-span-4 overflow-hidden image-container">
@@ -56,7 +63,7 @@ const TeamCard = ({ image, name, designation, twitterLink, emailLink, instaLink,
                     <small className="text-black">{designation}</small>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

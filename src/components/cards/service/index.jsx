@@ -15,8 +15,8 @@ const ServiceCard = ({ image, title, desc, pricing, trending = false }) => {
   const truncatedDesc = descWords.slice(0, 20).join(' ');
 
   return (
-    <div className={`card card-image-cover shadow-lg p-4 ${trending ? 'bg-orange-4' : 'bg-orange-3'}`}>
-      <div className="overflow-hidden w-full h-64">
+    <div className={`card card-image-cover grid grid-rows-2 gap-2 shadow-lg p-4 ${trending ? 'bg-orange-4' : 'bg-orange-3'}`}>
+      <div className="overflow-hidden w-full h-52">
         <img src={image} alt={title} loading='lazy' className='h-full w-full my-auto mx-auto' />
       </div>
       <div className="card-body p-0">
@@ -39,7 +39,7 @@ const ServiceCard = ({ image, title, desc, pricing, trending = false }) => {
           {
             currentUser ? (
               <label
-                htmlFor="modal-1"
+                htmlFor={`modal-${title}`}
                 className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
                 Get Plan
               </label>

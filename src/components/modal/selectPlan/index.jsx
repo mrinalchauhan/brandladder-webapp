@@ -25,6 +25,7 @@ const SelectPlan = ({ title, isPresent }) => {
             let orderIdCount = Date.now().toString();
             try {
                 await uploadNestedData('users', currentUser.uid, 'orders', orderIdCount.toString(), data);
+
                 showSuccessToast("Your Order Booked, Our Team Will Contact You")
                 setIsModalOpen(false); // Close modal
             } catch (error) {
@@ -56,11 +57,20 @@ const SelectPlan = ({ title, isPresent }) => {
 
     return (
         <>
-            <input className="modal-state" id="modal-1" type="checkbox" checked={isModalOpen} onChange={() => setIsModalOpen(!isModalOpen)} />
+            <input
+                className="modal-state" id={`modal-${title}`}
+                type="checkbox"
+                checked={isModalOpen}
+                onChange={() => setIsModalOpen(!isModalOpen)}
+            />
             <div className="modal">
-                <label className="modal-overlay" htmlFor="modal-1"></label>
+                <label className="modal-overlay" htmlFor={`modal-${title}`}></label>
                 <div className="modal-content flex flex-col gap-5 bg-white">
-                    <label htmlFor="modal-1" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black">✕</label>
+                    <label
+                        htmlFor="modal-1"
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black hover:bg-inherit">
+                        ✕
+                    </label>
                     {
                         isPresent ? (
                             <>

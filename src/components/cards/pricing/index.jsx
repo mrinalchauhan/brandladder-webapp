@@ -36,7 +36,7 @@ export const PricingCard = ({ planType, monthlyPrice, usdPrice, featureList, pri
                         {currentUser ? (
                             <label
                                 className="btn w-full rounded-3xl bg-orange-5 px-12 py-3 text-center font-semibold text-black transition duration-300 ease-in-out hover:shadow-lg hover:bg-orange-8 hover:text-black my-3"
-                                htmlFor="modal-1"
+                                htmlFor={`modal-${planType}`}
                             >
                                 Get Plan
                             </label>
@@ -53,6 +53,7 @@ export const PricingCard = ({ planType, monthlyPrice, usdPrice, featureList, pri
 
                 </div>
                 <SelectPlanModal title={planType} isPresent={isPresent} />
+
                 <div className="my-2">
                     <p className="text-lg font-medium  sm:text-xl">What's included:</p>
 
