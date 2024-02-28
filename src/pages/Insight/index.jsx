@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from "framer-motion";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import { useFirestore } from '../../context/FirestoreContext';
 import useBounceAnimation from '../../hooks/animations/useBounceAnimation';
 import useSmoothScroll from '../../hooks/general/useSmoothScroll'
 
@@ -45,62 +46,68 @@ const InsightContent = () => {
 }
 
 const Blogs = () => {
+
+    const [blogData, setBlogData] = useState()
+    const { getTeamData: getBlogData } = useFirestore()
+
+    const handleFetchAllBlogsData = async () => {
+        try {
+            const res = await getBlogData('blogs')
+            setBlogData(res)
+            // console.log(res)
+        } catch (error) {
+            console.error('error while fetching blog data: ', error);
+        }
+    }
+
+    useEffect(() => {
+        handleFetchAllBlogsData()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className='bg-inherit p-4'>
             <h1 className='text-3xl font-medium pb-5 mb-4' >Best Blog Of The Week</h1>
-            {/* <img src={TitleBg} alt="" className='max-w-60 absolute bottom-52 right-0' /> */}
-            {/* <section className="flex bg-orange-2 py-5 px-2">
-                <aside>
-                    <ImageCard
-                        imageSrc={BlogImg1}
-                        date='July 17,2023'
-                        domain='UI/UX'
-                        title='Top 12 Figma plugins for UI/UX designers in 2023'
-                    />
-                </aside>
-                <aside className="grid grid-row-2 gap-4 max-w-full">
-                    <ImageCard
-                        imageSrc={BlogImg2}
-                        date='July 17,2023'
-                        domain='UI/UX'
-                        title='Top 12 Figma plugins for UI/UX designers'
-                    />
-                    <div className="relative overflow-hidden shadow-lg rounded-3xl">
-                        <img src={BlogImg2} alt="" className="h-auto" />
-
-                        <div className="absolute bottom-10 p-4 ">
-                            <Link to='/insight' >
-                                <p
-                                    className='bg-white text-orange-9 flex font-semibold rounded-3xl px-5 py-3 mx-auto shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:bg-orange-5 hover:text-orange-1'>
-                                    See All Post <FaArrowRightLong className='my-auto mx-2' />
-                                </p>
-                            </Link>
-                        </div>
-                    </div>
-                </aside>
-            </section> */}
 
             <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <aside className='col-span-2 my-auto'>
-                    <ImageCard
-                        imageSrc={BlogImg1}
-                        date='1 Jan 2024'
-                        domain='UI/UX'
-                        title='Top 12 Figma plugins for UI/UX designers in 2023'
-                    />
+                    <div className="my-auto max-w-full">
+
+                        {blogData && blogData.length > 0 ? (
+                            <ImageCard
+                                imageSrc={BlogImg1}
+                                date={blogData[blogData.length - 1]?.date}
+                                domain={blogData[blogData.length - 1]?.domain}
+                                title={blogData[blogData.length - 1]?.blogTitle}
+                                link={`/insight/${blogData[blogData.length - 1]?.id}`}
+                            />
+                        ) : (
+                            <div className="skeleton-pulse h-96 rounded-3xl"></div>
+                        )}
+                    </div>
                 </aside>
 
                 <aside className='space-y-4 col-span-1'>
                     <div className="overflow-hidden ">
-                        <ImageCard
-                            imageSrc={BlogImg2}
-                            date='1 Jan 2024'
-                            domain='UI/UX'
-                            title='Top 12 Figma plugins for UI/UX designers in 2023'
-                        />
+                        {blogData && blogData.length > 0 ? (
+                            <ImageCard
+                                imageSrc={BlogImg1}
+                                date={blogData[blogData.length - 2]?.date}
+                                domain={blogData[blogData.length - 2]?.domain}
+                                title={blogData[blogData.length - 2]?.blogTitle}
+                                link={`/insight/${blogData[blogData.length - 2]?.id}`}
+                            />
+                        ) : (
+                            <div className="skeleton-pulse h-60 rounded-2xl"></div>
+                        )}
                     </div>
+                    {blogData && blogData.length > 0 ? (
+                        <HoverCard image={BlogImg2} title='More Blogs' />
+                    ) : (
+                        <div className="skeleton-pulse h-60 rounded-2xl"></div>
+                    )}
 
-                    <HoverCard image={BlogImg2} title='More Blogs' />
 
                 </aside>
             </section>
@@ -152,34 +159,21 @@ const Blogs = () => {
             </section>
             <h2 className='text-black text-xl font-normal my-4'>More Blogs ... </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <BlogCard
-                    image={TestimonialImg}
-                    domain='Test Blog'
-                    topic='Text Blog'
-                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
-                    link='/insight'
-                />
-                <BlogCard
-                    image={TestimonialImg}
-                    domain='Test Blog'
-                    topic='Text Blog'
-                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
-                    link='/insight'
-                />
-                <BlogCard
-                    image={TestimonialImg}
-                    domain='Test Blog'
-                    topic='Text Blog'
-                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
-                    link='/insight'
-                />
-                <BlogCard
-                    image={TestimonialImg}
-                    domain='Test Blog'
-                    topic='Text Blog'
-                    content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum exercitationem ipsa in tempora. Tenetur corrupti autem modi labore dolor.'
-                    link='/insight'
-                />
+
+                {
+                    blogData && blogData.map((data) => {
+                        return (
+                            <BlogCard
+                                key={data.id}
+                                image={data.titleImage}
+                                domain={data.domain}
+                                topic={data.blogTitle}
+                                desc={data.blogDesc}
+                                link={`/insight/${data.id}`}
+                            />
+                        )
+                    })
+                }
             </div>
         </section>
     )

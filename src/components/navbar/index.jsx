@@ -8,12 +8,12 @@ import ScrollProgressBar from '../progress-bar/ScrollProgress';
 import CartModal from '../modal/cart'
 
 import { RxAvatar } from "react-icons/rx";
-import { MdOutlineContacts, MdKeyboardArrowDown } from "react-icons/md";
+import { MdOutlineContacts, MdKeyboardArrowDown, MdOutlineEmojiEvents } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 import { PiArrowLineLeftBold } from "react-icons/pi";
-import { FaHome, FaRegBuilding } from "react-icons/fa";
-import { GrServices } from "react-icons/gr";
+import { FaRegBuilding } from "react-icons/fa";
+import { GrServices, GrArticle } from "react-icons/gr";
 
 import PageFlipSound from '../../assests/sound/page-flip.mp3'
 
@@ -53,11 +53,11 @@ const Navbar = () => {
         'navbar z-50 bg-orange-2 transition-opacity duration-300 ease-in-out';
 
     const navLinks = [
-        {
-            path: '/',
-            title: 'Home',
-            icon: <FaHome />,
-        },
+        // {
+        //     path: '/',
+        //     title: 'Home',
+        //     icon: <FaHome />,
+        // },
         {
             path: '/plans',
             title: 'Pricing',
@@ -68,11 +68,16 @@ const Navbar = () => {
             title: 'Services',
             icon: <GrServices />,
         },
-        // {
-        //     path: '/insight',
-        //     title: 'Insights',
-        //     icon: <GrArticle />,
-        // },
+        {
+            path: '/events',
+            title: 'Events',
+            icon: <MdOutlineEmojiEvents />,
+        },
+        {
+            path: '/insight',
+            title: 'Insights',
+            icon: <GrArticle />,
+        },
         {
             path: '/about',
             title: 'AboutUs',

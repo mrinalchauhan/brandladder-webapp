@@ -1,44 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const TestimonialCard = ({ image, topic, content, link, domain }) => {
+const BlogCard = ({ image, topic, desc, link, domain }) => {
 
-    const limitContent = (text, limit) => {
-        const words = text.split(' ');
-        if (words.length > limit) {
-            return words.slice(0, limit).join(' ') + '...';
+    const limitContent = () => {
+        const words = desc?.split(' ');
+        if (words?.length > 20) {
+            return words.slice(0, 20).join(' ') + '  ';
         } else {
-            return text;
+            return desc;
         }
     };
 
     return (
-        <div className='container p-4 shadow-lg rounded-3xl transition duration-500 ease-in-out hover:bg-orange-2 hover:shadow-xl'>
-            <div className="border-none overflow-hidden lg:h-52 md:h-72 w-full m-auto shadow p-4 rounded-2xl">
-                <img src={image} alt={topic} className="rounded-full m-auto" />
+        <div className='container space-y-6 p-4 shadow-2xl rounded-3xl transition duration-500 ease-in-out hover:bg-orange-2 '>
+            <div className="border-none overflow-hidden lg:h-52 md:h-56 w-full m-auto shadow p-4 rounded-2xl">
+                <img src={image} alt={topic} className="rounded m-auto" />
             </div>
 
             <div className='text-black space-y-2'>
-                <div className="">
-                    <small className='text-xs'>{domain}</small>
-                    <h2 className='font-medium'>{topic}</h2>
+                <div className="space-y-4">
+                    <small className='text-xs border rounded-xl border-orange-5 px-2 py-1'>
+                        {domain}
+                    </small>
+                    <Link to={link}>
+                        <h2 className='font-medium'>{topic}</h2>
+                    </Link>
                 </div>
-                <p className='text-xs'>
-                    {limitContent(content, 20)}
-                    <Link to={link} className=' link link-primary text-xs' > Read More ... </Link>
-                </p>
+                <div className='text-xs text-orange-8'>
+                    {limitContent()}
+                    <Link to={link} className='link' > <p className='text-sm text-orange-10'>Read More ...</p></Link>
+                </div>
             </div>
         </div>
     );
 }
 
-TestimonialCard.propTypes = {
-    image: PropTypes.string.isRequired,
-    topic: PropTypes.string.isRequired,
-    domain: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-};
+// TestimonialCard.propTypes = {
+//     image: PropTypes.string.isRequired,
+//     topic: PropTypes.string.isRequired,
+//     domain: PropTypes.string.isRequired,
+//     content: PropTypes.string.isRequired,
+//     link: PropTypes.string.isRequired,
+// };
 
-export default TestimonialCard;
+export default BlogCard;

@@ -14,23 +14,23 @@ const CardModal = () => {
     const { getAllSubdocumentData } = useFirestore();
     const { currentUser } = useAuth()
 
-    const handleGetCartData = async () => {
-        try {
-            const res = await getAllSubdocumentData('users', currentUser.uid, 'orders')
-
-            setCartData(res);
-
-        } catch (error) {
-            console.log("Error while fetching cart data: ", error);
-        }
-    }
 
     useEffect(() => {
-        handleGetCartData()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        const handleGetCartData = async () => {
+            try {
+                const res = await getAllSubdocumentData('users', currentUser.uid, 'orders')
+                // console.log(res)
+                setCartData(res);
 
-    console.log(cartData)
+            } catch (error) {
+                console.log("Error while fetching cart data: ", error);
+            }
+        }
+        handleGetCartData()
+
+    }, [currentUser.uid, getAllSubdocumentData])
+
+    // console.log(cartData)
 
     return (
         <div>

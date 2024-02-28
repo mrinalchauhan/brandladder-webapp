@@ -2,7 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const ImageCard = ({ imageSrc, date, domain, title }) => {
+const ImageCard = ({ imageSrc, date, domain, title, link }) => {
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    };
+
     return (
         <div className="relative overflow-hidden shadow-lg rounded-3xl bg-orange-1 w-full">
             <div className="overflow-hidden">
@@ -11,7 +17,7 @@ const ImageCard = ({ imageSrc, date, domain, title }) => {
 
             <div className="absolute top-0 left-0 p-4 text-white">
                 <span className="badge badge-sm md:badge-xl my-0 md:my-2 border-orange-4  bg-white text-orange-7 shadow-2xl">
-                    {date}
+                    {formatDate(date)}
                 </span> <br />
                 <span className="badge badge-xs md:badge-lg my-2 bg-inherit border-orange-4 text-orange-7 shadow-2xl">
                     {domain}
@@ -23,7 +29,7 @@ const ImageCard = ({ imageSrc, date, domain, title }) => {
                     <p className='bg-white text-orange-9 text-xs md:text-lg font-normal md:font-semibold rounded-3xl px-2 md:px-3 py-2 md:py-2 mx-auto shadow-2xl text-cent'>
                         {title}
                     </p>
-                    <Link to='/insight' >
+                    <Link to={link}>
                         <p className='bg-white font-bold text-orange-9 rounded-full p-4 transform duration-300 -rotate-45 hover:rotate-0 transition-transform hover:bg-orange-5 hover:text-white hover:shadow-2xl'>
                             <FaArrowRightLong />
                         </p>

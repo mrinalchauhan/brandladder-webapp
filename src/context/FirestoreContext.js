@@ -19,21 +19,6 @@ export function useFirestore() {
 
 export function FirestoreProvider({ children }) {
 
-    const getTeamData = async (collectionName) => {
-
-        try {
-            const querySnapshot = await getDocs(collection(db, collectionName));
-            const data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({ id: doc.id, ...doc.data() });
-            });
-            return data;
-        } catch (error) {
-            console.error("Error getting documents: ", error);
-            return [];
-        }
-    };
-
     const uploadUserData = async (collectionName, docId, data) => {
         try {
             const docRef = doc(db, collectionName, docId);
@@ -43,36 +28,6 @@ export function FirestoreProvider({ children }) {
         } catch (error) {
             console.error("Error adding document: ", error);
             return false;
-        }
-    };
-
-    const getDocumentData = async (collectionName, docId) => {
-        try {
-            const docRef = doc(db, collectionName, docId);
-            const docSnapshot = await getDoc(docRef);
-            if (docSnapshot.exists()) {
-                return docSnapshot.data();
-            } else {
-                console.error("Document does not exist");
-                return null;
-            }
-        } catch (error) {
-            console.error("Error getting document: ", error);
-            return null;
-        }
-    };
-
-    const getAllDocumentIds = async (collectionName) => {
-        try {
-            const querySnapshot = await getDocs(collection(db, collectionName));
-            const ids = [];
-            querySnapshot.forEach((doc) => {
-                ids.push(doc.id);
-            });
-            return ids;
-        } catch (error) {
-            console.error("Error getting document IDs: ", error);
-            return [];
         }
     };
 
@@ -110,6 +65,52 @@ export function FirestoreProvider({ children }) {
         }
     };
 
+    const getTeamData = async (collectionName) => {
+
+        try {
+            const querySnapshot = await getDocs(collection(db, collectionName));
+            const data = [];
+            querySnapshot.forEach((doc) => {
+                data.push({ id: doc.id, ...doc.data() });
+            });
+            return data;
+        } catch (error) {
+            console.error("Error getting documents: ", error);
+            return [];
+        }
+    };
+
+    const getDocumentData = async (collectionName, docId) => {
+        try {
+            const docRef = doc(db, collectionName, docId);
+            const docSnapshot = await getDoc(docRef);
+            if (docSnapshot.exists()) {
+                // console.log(docSnapshot.data())
+                return docSnapshot.data();
+            } else {
+                console.error("Document does not exist");
+                return null;
+            }
+        } catch (error) {
+            console.error("Error getting document: ", error);
+            return null;
+        }
+    };
+
+    const getAllDocumentIds = async (collectionName) => {
+        try {
+            const querySnapshot = await getDocs(collection(db, collectionName));
+            const ids = [];
+            querySnapshot.forEach((doc) => {
+                ids.push(doc.id);
+            });
+            return ids;
+        } catch (error) {
+            console.error("Error getting document IDs: ", error);
+            return [];
+        }
+    };
+
     const getAllSubdocumentData = async (collectionName, docId, subcollectionName) => {
         try {
             const docRef = doc(db, collectionName, docId);
@@ -122,6 +123,25 @@ export function FirestoreProvider({ children }) {
             return subdocuments;
         } catch (error) {
             console.error("Error getting all subdocuments data: ", error);
+            return [];
+        }
+    };
+
+    const fetchAllDocumentIdsAndData = async (collectionName) => {
+        try {
+            const querySnapshot = await getDocs(collection(db, collectionName));
+            const documents = [];
+
+            querySnapshot.forEach((doc) => {
+                documents.push({
+                    id: doc.id,
+                    data: doc.data()
+                });
+            });
+
+            return documents;
+        } catch (error) {
+            console.error("Error getting document IDs and data: ", error);
             return [];
         }
     };
@@ -146,6 +166,7 @@ export function FirestoreProvider({ children }) {
         getTeamData,
         getDocumentData,
         getAllDocumentIds,
+        fetchAllDocumentIdsAndData,
         uploadEmptyDocument,
         uploadNestedData,
         getAllSubdocumentData,

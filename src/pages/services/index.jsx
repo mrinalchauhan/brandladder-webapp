@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { animated } from 'react-spring';
 
@@ -15,6 +15,7 @@ const Services = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedOption, setSelectedOption] = useState('All');
+    const [isSticky, setSticky] = useState(false);
 
     const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation()
     const bounceAnimationProps = useBounceAnimation();
@@ -28,7 +29,7 @@ const Services = () => {
     switch (selectedOption) {
         case 'Technical':
             serviceList = techServices;
-            sectionTitle = 'Technical';
+            sectionTitle = 'Technical Services';
             break;
         case 'Digital Marketing':
             serviceList = digitalServices;
@@ -36,7 +37,7 @@ const Services = () => {
             break;
         case 'CA & Registration':
             serviceList = caServices;
-            sectionTitle = 'CA & Registration';
+            sectionTitle = 'CA & Registration Services';
             break;
         default:
             serviceList = [...techServices, ...digitalServices, ...caServices];
@@ -49,11 +50,23 @@ const Services = () => {
         service.desc.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        setSticky(scrollPosition > 200);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <motion.div {...bounceAnimationProps} className='p-5 bg-orange-2'>
             {/* searchbar */}
-            <animated.section className='my-5' ref={fadeInDownRef} style={fadeInDown}>
-                <div className='py-0 border-2 mx-auto border-orange-6 max-w-xl flex flex-col md:flex-row justify-center items-center rounded-3xl'>
+            <animated.section className='my-5 navbar-floating top-14' ref={fadeInDownRef} style={fadeInDown}>
+                <div className='py-1 px-2 border-2 mx-auto border-orange-6 bg-orange-2 max-w-xl flex flex-col md:flex-row justify-center items-center rounded-3xl'>
                     <select
                         className="select border-none max-w-56 text-orange-6 mx-auto text-center"
                         value={selectedOption}
@@ -61,7 +74,7 @@ const Services = () => {
                     >
                         <option value="All">All</option>
                         <option value="Technical">Technical</option>
-                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Digital">Digital</option>
                         <option value="CA & Registration">CA & Registration</option>
                     </select>
                     <div className="text-orange-6 hidden md:block text-2xl">|</div>

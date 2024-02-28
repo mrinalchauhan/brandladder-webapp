@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import avtImg from '../../../assests/images/logo1.png';
 
 const TestimonialCard = ({ image, name, designation, content }) => {
@@ -25,11 +25,11 @@ const TestimonialCard = ({ image, name, designation, content }) => {
     )
 }
 
-TestimonialCard.propTypes = {
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    designation: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-};
+// TestimonialCard.propTypes = {
+//     image: PropTypes.string.isRequired,
+//     name: PropTypes.string.isRequired,
+//     designation: PropTypes.string.isRequired,
+//     content: PropTypes.string.isRequired,
+// };
 
 export default TestimonialCard

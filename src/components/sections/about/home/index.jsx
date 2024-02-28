@@ -18,6 +18,27 @@ const HomeAboutSection = () => {
     const [fadeInRightRef3, fadeInRight3] = useFadeInRightAnimation();
     const [fadeInLeftRef3, fadeInLeft3] = useFadeInLeftAnimation();
 
+    // const imgSpringProps1 = useSpring({
+    //     from: { transform: 'translateY(10px)' },
+    //     to: { transform: 'translateY(-10px)' },
+    //     loop: { reverse: true },
+    //     config: { duration: 3000 },
+    // });
+
+    // const imgSpringProps2 = useSpring({
+    //     from: { transform: 'translateY(10px)' },
+    //     to: { transform: 'translateY(-10px)' },
+    //     loop: { reverse: true },
+    //     config: { duration: 3000, delay: 200 },
+    // });
+
+    // const imgSpringProps3 = useSpring({
+    //     from: { transform: 'translateY(10px)' },
+    //     to: { transform: 'translateY(-10px)' },
+    //     loop: { reverse: true },
+    //     config: { duration: 3000, delay: 400 },
+    // });
+
     return (
         <section className='my-4'>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 md:mb-0">
@@ -36,7 +57,7 @@ const HomeAboutSection = () => {
                         Digital Services
                     </h2>
                     <p className='text-gray-500'>
-                        We design services as per your needs. With the market flooding with digital services, we curate what your business needs, we know every business is unique in its own way and therefore needs its unique strategies. From expertly curated social strategies, and UI/UX to top-notch SEO. Brand Ladder is the one-stop solution for all your Digital marketing queries. Our approach is simple, writing your journey in a way that levels up your game in each segment. We have experts for each and every need of yours; upgrade your social media game, create content that resonates with your audience, lead generation, google ads, and meta ads; you name it and we have got it for you. With us, you are not just a client, but a part of our family. Experience growth like never before.
+                        We tailor services to fit your unique needs in today's saturated digital market. From social strategies to UI/UX and top-tier SEO, Brand Ladder is your all-in-one digital marketing solution. Our approach is simple: we elevate your business at every step, with experts in social media, content creation, lead generation, Google ads, and more. Join our family and experience unprecedented growth.
                     </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />
@@ -76,8 +97,7 @@ const HomeAboutSection = () => {
                     <h2 className='text-gray-600 text-3xl md:text-4xl font-normal md:font-semibold'>
                         Technical Services
                     </h2>
-                    <p className='text-gray-500'>
-                        We deliver solutions integrated with experience, we have professionals who deliver a set of comprehensive services tailored to meet your expectations, from engaging web development that reflects your brand’s identity to user-friendly web application development that enhances user experience. At Brand Ladder, we work to upgrade your digital landscape with our comprehensive technological services with AI/ML-driven innovations that boost your productivity, cloud solutions that aid your growth, and CI/CD pipeline solutions that optimize your development process. With our futuristic approach, we focus on page speed optimization and provide users with an engaging experience. Besides all this, we make sure you keep upgrading with our easily accessible maintenance services, so you are one step ahead all the time. Partner, with Brand Ladder and expand the technical horizon of your business with us.
+                    <p className='text-gray-500'>We offer expertly integrated solutions, tailored to your needs. From web development reflecting your brand's identity to user-friendly applications, Brand Ladder enhances your digital presence. Our AI/ML-driven innovations boost productivity, while cloud solutions aid growth. With a focus on page speed and maintenance services, stay ahead with Brand Ladder. Partner with us to expand your business's technical horizon.
                     </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />
@@ -94,7 +114,7 @@ const HomeAboutSection = () => {
                         CA And Finance Services
                     </h2>
                     <p className='text-gray-500'>
-                        We have onboarded the best CA services with the help of top Chartered Accountants of India, providing you with a wide range of services. We understand how vital finances are and will make sure they are handled with accuracy and complete transparency. Our exceptional team of professionals will handle any part of the accounting, giving you precise information to make the best decision for your business. Further, we assist you with the seamless acquisition of labor licenses, FSSAI licenses, company and firm registration, and other necessary permits as well. We also specialize in providing net worth certificates, payroll management, digital signatures and so much more. You can rely on Brand Ladder to take care of your financial load while you focus on other activities of your business. Empower your financial growth with us today.
+                        We've partnered with top Chartered Accountants in India to offer comprehensive CA services. Our expert team ensures accurate and transparent financial handling. From accounting to acquiring licenses and permits, net worth certificates, payroll management, and more, we've got you covered. Trust Brand Ladder for your financial needs, allowing you to focus on growing your business.
                     </p>
                     <Link to='/services'>
                         <OutlineButton text="Learn More" />

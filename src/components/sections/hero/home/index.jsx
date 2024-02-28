@@ -56,10 +56,13 @@ const HomeHeroSection = ({ currentUser }) => {
                     ref={fadeInLeftRef}
                     style={fadeInLeft}
                 >
-                    <img
-                        src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Fhero-main.png?alt=media&token=4c0fb10f-01ef-4c89-8307-96de0ddb03e5"
-                        alt=""
-                        className='max-h-dvh' />
+                    <div>
+                        <img
+                            src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/general%2Fhero-main-min.png?alt=media&token=40a3640f-6f65-415d-88af-4722bab64ce7"
+                            alt="BrnadLadder"
+                            className='max-h-dvh' />
+
+                    </div>
                 </animated.div>
             </div>
             <animated.div

@@ -2,6 +2,10 @@ import Home from '../pages';
 import Plans from '../pages/plans';
 import Services from '../pages/services'
 import Insight from '../pages/Insight';
+import Events from '../pages/events';
+import EventDtl from '../pages/events/event-dtl';
+import Blogs from '../pages/Insight/blogs'
+import Blog from '../pages/Insight/blogs/blog';
 import About from '../pages/about';
 import Contact from '../pages/contact';
 import Cart from '../pages/cart';
@@ -23,8 +27,24 @@ export const UnAuthenticateRoutes = [
         element: <Insight />,
     },
     {
+        path: '/blogs',
+        element: <Blogs />,
+    },
+    {
+        path: '/insight/:blog',
+        element: <Blog />,
+    },
+    {
         path: '/services',
         element: <Services />,
+    },
+    {
+        path: '/events',
+        element: <Events />,
+    },
+    {
+        path: '/events/:eventId',
+        element: <EventDtl />,
     },
     {
         path: '/about',

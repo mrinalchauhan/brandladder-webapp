@@ -85,7 +85,7 @@ const Home = () => {
                 <HomeHeroSection currentUser={currentUser} />
             </section>
 
-            <section className='px-14 pt-10 bg-orange-1 z-20'>
+            <section className='px-2 md:px-14 pt-10 bg-orange-1'>
                 <HomeAboutSection />
             </section>
 
