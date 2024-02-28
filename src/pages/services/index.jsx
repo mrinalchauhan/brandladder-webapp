@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { animated } from 'react-spring';
 
@@ -15,7 +15,6 @@ const Services = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedOption, setSelectedOption] = useState('All');
-    const [isSticky, setSticky] = useState(false);
 
     const [fadeInDownRef, fadeInDown] = useFadeInDownAnimation()
     const bounceAnimationProps = useBounceAnimation();
@@ -49,18 +48,6 @@ const Services = () => {
         service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         service.desc.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-    const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        setSticky(scrollPosition > 200);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
         <motion.div {...bounceAnimationProps} className='p-5 bg-orange-2'>
