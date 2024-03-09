@@ -151,13 +151,13 @@ const Events = () => {
                     </div>
                     {/* {loadedImages !== teamImg.length && <p className="text-black">Loading...</p>} */}
                     <p className="text-black text-sm md:text-base">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui minima nihil consectetur. Doloribus explicabo numquam rerum, a, quia dolores ad ex quidem reiciendis eligendi possimus quis maiores id officiis! Officiis!
+                        Unlock endless excitement! Dive into a realm of diverse events - conferences, workshops, parties, and more. Fuel your passion or simply unwind with us. Your gateway to unforgettable experiences awaits!
                     </p>
                     <div className="grid grid-cols-2 gap-4 w-full md:w-3/5 mx-auto md:mx-0">
 
                         {
                             isAuth ? (
-                                <Link to='/insight'>
+                                <Link to='/blogs'>
                                     <button
                                         className="btn bg-orange-6 text-black shadow-md transition-all ease-in-out duration-500  hover:text-orange-1 hover:shadow-2xl hover:border-orange-6 w-full">
                                         Checkout Articles
@@ -174,10 +174,12 @@ const Events = () => {
                             )
                         }
 
-                        <button
-                            className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
-                            Learn More <MdArrowOutward className='mx-2 text-xl' />
-                        </button>
+                        <Link to='/about' >
+                            <button
+                                className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
+                                Know Us <MdArrowOutward className='mx-2 text-xl' />
+                            </button>
+                        </Link>
                     </div>
                 </animated.aside>
                 <animated.aside

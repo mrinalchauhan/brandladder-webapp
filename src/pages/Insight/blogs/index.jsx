@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useFirestore } from '../../../context/FirestoreContext';
 import useSmoothScroll from '../../../hooks/general/useSmoothScroll';
 
+import HelmetComponent from '../../../helmet';
 import Loader from '../../../components/loader'
 import BlogCard from '../../../components/cards/blog';
 
 const Blogs = () => {
     useSmoothScroll();
-    const [selectedTab, setSelectedTab] = useState('tech');
+    const [selectedTab, setSelectedTab] = useState('all');
 
     // const [loading, setLoading] = useState(true);
     const [blogData, setBlogData] = useState()
@@ -44,7 +45,17 @@ const Blogs = () => {
 
     return (
         <section className='lg:py-10'>
-            <p className='text-orange-4 hidden md:block'>Our Article Gallery ... </p>
+
+            <HelmetComponent
+                title='Brandladder Articles'
+                // desc={blogData?.}
+                // author={blogData?.writerName}
+                page='articles'
+                blogKeywords=''
+            // focusKeywords={blogData?.focusKeywords && blogData.focusKeywords}
+            />
+
+            <p className='text-orange-4 hidden md:block'>Our Article Gallery .... </p>
             <div className='text-center overflow-x-scroll' >
                 <div className="inline-flex rounded-lg border border-gray-100 bg-orange-4 p-2 shadow-xl">
                     <button
@@ -88,27 +99,42 @@ const Blogs = () => {
 
             <div className='p-5 md:px-20'>
                 <aside>
+                    <HelmetComponent
+                        title='Brandladder Articles'
+                        // desc={blogData?.}
+                        // author={blogData?.writerName}
+                        page='articles'
+                        blogKeywords=''
+                    // focusKeywords={blogData?.focusKeywords && blogData.focusKeywords}
+                    />
                     {
                         selectedTab === 'all' && (
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     blogData ? (
-                                        blogData.map((data) => {
-                                            return (
+                                        blogData
+                                            .filter(data => !data.archive)
+                                            .map((data) => (
                                                 <BlogCard
                                                     key={data.id}
                                                     image={data.titleImage}
+                                                    domain={data.domain}
                                                     topic={data.blogTitle}
                                                     desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
+                                                    link={
+                                                        data.aditionalURL ? (
+                                                            `/insight/${data.aditionalURL}`
+                                                        ) : (
+                                                            `/insight/${data.id}`
+                                                        )
+                                                    }
                                                 />
-                                            )
-                                        })
+                                            ))
                                     ) : (
                                         <Loader />
                                     )
                                 }
+
 
                             </div>
                         )
@@ -116,32 +142,35 @@ const Blogs = () => {
                 </aside>
 
                 <aside>
+                    <HelmetComponent
+                        title='Brandladder Technical Articles'
+                        // desc={blogData?.}
+                        // author={blogData?.writerName}
+                        page='articles'
+                        blogKeywords=''
+                    // focusKeywords={blogData?.focusKeywords && blogData.focusKeywords}
+                    />
                     {
                         selectedTab === 'tech' && (
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     techBlogs ? (
-                                        techBlogs.map((data) => {
-                                            return (
-                                                <BlogCard
-                                                    key={data.id}
-                                                    image={data.titleImage}
-                                                    topic={data.blogTitle}
-                                                    desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
-                                                />
-                                            )
-                                        })
+                                        techBlogs
+                                            .filter(data => !data.archive)
+                                            .map((data) => {
+                                                return (
+                                                    <BlogCard
+                                                        key={data.id}
+                                                        image={data.titleImage}
+                                                        topic={data.blogTitle}
+                                                        desc={data.blogDesc}
+                                                        link={`/insight/${data.id}`}
+                                                        domain={data.domain}
+                                                    />
+                                                )
+                                            })
                                     ) : (
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                        </div>
+                                        <Loader />
                                     )
                                 }
 
@@ -156,27 +185,22 @@ const Blogs = () => {
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     digitalBlogs ? (
-                                        digitalBlogs.map((data) => {
-                                            return (
-                                                <BlogCard
-                                                    key={data.id}
-                                                    image={data.titleImage}
-                                                    topic={data.blogTitle}
-                                                    desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
-                                                />
-                                            )
-                                        })
+                                        digitalBlogs
+                                            .filter(data => !data.archive)
+                                            .map((data) => {
+                                                return (
+                                                    <BlogCard
+                                                        key={data.id}
+                                                        image={data.titleImage}
+                                                        topic={data.blogTitle}
+                                                        desc={data.blogDesc}
+                                                        link={`/insight/${data.id}`}
+                                                        domain={data.domain}
+                                                    />
+                                                )
+                                            })
                                     ) : (
-                                        <div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                        </div>
+                                        <Loader />
                                     )
                                 }
 
@@ -191,27 +215,22 @@ const Blogs = () => {
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     startupBlogs ? (
-                                        startupBlogs.map((data) => {
-                                            return (
-                                                <BlogCard
-                                                    key={data.id}
-                                                    image={data.titleImage}
-                                                    topic={data.blogTitle}
-                                                    desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
-                                                />
-                                            )
-                                        })
+                                        startupBlogs
+                                            .filter(data => !data.archive)
+                                            .map((data) => {
+                                                return (
+                                                    <BlogCard
+                                                        key={data.id}
+                                                        image={data.titleImage}
+                                                        topic={data.blogTitle}
+                                                        desc={data.blogDesc}
+                                                        link={`/insight/${data.id}`}
+                                                        domain={data.domain}
+                                                    />
+                                                )
+                                            })
                                     ) : (
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                        </div>
+                                        <Loader />
                                     )
                                 }
 
@@ -226,27 +245,22 @@ const Blogs = () => {
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     innovationBlogs ? (
-                                        innovationBlogs.map((data) => {
-                                            return (
-                                                <BlogCard
-                                                    key={data.id}
-                                                    image={data.titleImage}
-                                                    topic={data.blogTitle}
-                                                    desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
-                                                />
-                                            )
-                                        })
+                                        innovationBlogs
+                                            .filter(data => !data.archive)
+                                            .map((data) => {
+                                                return (
+                                                    <BlogCard
+                                                        key={data.id}
+                                                        image={data.titleImage}
+                                                        topic={data.blogTitle}
+                                                        desc={data.blogDesc}
+                                                        link={`/insight/${data.id}`}
+                                                        domain={data.domain}
+                                                    />
+                                                )
+                                            })
                                     ) : (
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                        </div>
+                                        <Loader />
                                     )
                                 }
 
@@ -261,27 +275,22 @@ const Blogs = () => {
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                                 {
                                     investmentBlogs ? (
-                                        investmentBlogs.map((data) => {
-                                            return (
-                                                <BlogCard
-                                                    key={data.id}
-                                                    image={data.titleImage}
-                                                    topic={data.blogTitle}
-                                                    desc={data.blogDesc}
-                                                    link={`/insight/${data.id}`}
-                                                    domain={data.domain}
-                                                />
-                                            )
-                                        })
+                                        investmentBlogs
+                                            .filter(data => !data.archive)
+                                            .map((data) => {
+                                                return (
+                                                    <BlogCard
+                                                        key={data.id}
+                                                        image={data.titleImage}
+                                                        topic={data.blogTitle}
+                                                        desc={data.blogDesc}
+                                                        link={`/insight/${data.id}`}
+                                                        domain={data.domain}
+                                                    />
+                                                )
+                                            })
                                     ) : (
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                            <div className="skeleton-pulse h-96"></div>
-                                        </div>
+                                        <Loader />
                                     )
                                 }
 

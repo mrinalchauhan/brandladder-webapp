@@ -60,6 +60,8 @@ const Blogs = () => {
         }
     }
 
+    const firstNonArchivedBlog = blogData?.find(blog => !blog.archive);
+
     useEffect(() => {
         handleFetchAllBlogsData()
 
@@ -74,13 +76,21 @@ const Blogs = () => {
                 <aside className='col-span-2 my-auto'>
                     <div className="my-auto max-w-full">
 
-                        {blogData && blogData.length > 0 ? (
+                        {firstNonArchivedBlog ? (
                             <ImageCard
                                 imageSrc={BlogImg1}
-                                date={blogData[blogData.length - 1]?.date}
-                                domain={blogData[blogData.length - 1]?.domain}
-                                title={blogData[blogData.length - 1]?.blogTitle}
-                                link={`/insight/${blogData[blogData.length - 1]?.id}`}
+                                date={firstNonArchivedBlog.date}
+                                domain={firstNonArchivedBlog.domain}
+                                title={firstNonArchivedBlog.blogTitle}
+                                largecard={true}
+                                // link={`/insight/${firstNonArchivedBlog.id}`}
+                                link={
+                                    firstNonArchivedBlog.aditionalURL ? (
+                                        `/insiight/${firstNonArchivedBlog.aditionalURL}`
+                                    ) : (
+                                        `/insight/${firstNonArchivedBlog.id}`
+                                    )
+                                }
                             />
                         ) : (
                             <div className="skeleton-pulse h-96 rounded-3xl"></div>
@@ -89,24 +99,44 @@ const Blogs = () => {
                 </aside>
 
                 <aside className='space-y-4 col-span-1'>
-                    <div className="overflow-hidden ">
+                    <div className="h-full grid grid-row-2 gap-4">
+                        <div className="overflow-hidden row-span-1">
+                            {blogData && blogData.length > 0 ? (
+                                <>
+                                    {blogData.slice().reverse().map((blog, index) => {
+                                        if (!blog.archive && index === 1) {
+                                            return (
+                                                <ImageCard
+                                                    key={blog.id}
+                                                    imageSrc={BlogImg1}
+                                                    date={blog.date}
+                                                    domain={blog.domain}
+                                                    title={blog.blogTitle}
+                                                    // link={`/insight/${blog.id}`}
+                                                    link={
+                                                        blog.aditionalURL ? (
+                                                            `/insight/${blog.aditionalURL}`
+                                                        ) : (
+                                                            `/insight/${blog.id}`
+                                                        )
+                                                    }
+                                                />
+                                            );
+                                        }
+                                        return null;
+                                    })}
+                                </>
+                            ) : (
+                                <div className="skeleton-pulse h-60 rounded-2xl"></div>
+                            )}
+
+                        </div>
                         {blogData && blogData.length > 0 ? (
-                            <ImageCard
-                                imageSrc={BlogImg1}
-                                date={blogData[blogData.length - 2]?.date}
-                                domain={blogData[blogData.length - 2]?.domain}
-                                title={blogData[blogData.length - 2]?.blogTitle}
-                                link={`/insight/${blogData[blogData.length - 2]?.id}`}
-                            />
+                            <HoverCard image={BlogImg2} title='More Blogs' />
                         ) : (
                             <div className="skeleton-pulse h-60 rounded-2xl"></div>
                         )}
                     </div>
-                    {blogData && blogData.length > 0 ? (
-                        <HoverCard image={BlogImg2} title='More Blogs' />
-                    ) : (
-                        <div className="skeleton-pulse h-60 rounded-2xl"></div>
-                    )}
 
 
                 </aside>
@@ -154,27 +184,34 @@ const Blogs = () => {
                     </div>
                 </div>
             </section>
+
             <section className='my-8'>
+                <h2 className='text-black text-xl font-normal my-4'>More Blogs ... </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
+                    {
+                        blogData && blogData
+                            .filter(data => !data.archive)
+                            .map((data) => (
+                                <BlogCard
+                                    key={data.id}
+                                    image={data.titleImage}
+                                    domain={data.domain}
+                                    topic={data.blogTitle}
+                                    desc={data.blogDesc}
+                                    link={
+                                        data.aditionalURL ? (
+                                            `/insight/${data.aditionalURL}`
+                                        ) : (
+                                            `/insight/${data.id}`
+                                        )
+                                    }
+                                />
+                            ))
+                    }
+
+                </div>
             </section>
-            <h2 className='text-black text-xl font-normal my-4'>More Blogs ... </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                {
-                    blogData && blogData.map((data) => {
-                        return (
-                            <BlogCard
-                                key={data.id}
-                                image={data.titleImage}
-                                domain={data.domain}
-                                topic={data.blogTitle}
-                                desc={data.blogDesc}
-                                link={`/insight/${data.id}`}
-                            />
-                        )
-                    })
-                }
-            </div>
         </section>
     )
 }

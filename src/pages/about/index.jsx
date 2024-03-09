@@ -122,17 +122,20 @@ const About = () => {
             <div className='p-10'>
                 <h2>Meet Our Team</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {teamData?.map((member) => (
-                        <TeamCard
-                            image={member.img}
-                            name={member.name}
-                            designation={member.designation}
-                            twitterLink={member.twitter}
-                            emailLink={member.email}
-                            instaLink={member.insta}
-                            facebookLink={member.facebook}
-                            linkedinLink={member.linkedin}
-                        />
+                    {teamData?.map((member, index) => (
+                        member.img && (
+                            <TeamCard
+                                key={index}
+                                image={member.img}
+                                name={member.name}
+                                designation={member.designation}
+                                twitterLink={member.twitter}
+                                emailLink={member.email}
+                                instaLink={member.insta}
+                                facebookLink={member.facebook}
+                                linkedinLink={member.linkedin}
+                            />
+                        )
                     ))}
                 </div>
             </div>

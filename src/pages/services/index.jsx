@@ -30,7 +30,7 @@ const Services = () => {
             serviceList = techServices;
             sectionTitle = 'Technical Services';
             break;
-        case 'Digital Marketing':
+        case 'Digital':
             serviceList = digitalServices;
             sectionTitle = 'Digital Services';
             break;
@@ -55,7 +55,7 @@ const Services = () => {
             <animated.section className='my-5 navbar-floating top-14' ref={fadeInDownRef} style={fadeInDown}>
                 <div className='py-1 px-2 border-2 mx-auto border-orange-6 bg-orange-2 max-w-xl flex flex-col md:flex-row justify-center items-center rounded-3xl'>
                     <select
-                        className="select border-none max-w-56 text-orange-6 mx-auto text-center"
+                        className="select border-none max-w-56 text-orange-6 bg-inherit mx-auto text-center"
                         value={selectedOption}
                         onChange={(e) => setSelectedOption(e.target.value)}
                     >
@@ -75,7 +75,7 @@ const Services = () => {
                 </div>
             </animated.section>
 
-            <div className="my-10">
+            <div className="my-16">
                 <ServiceSection serviceList={filteredServices} sectionTitle={sectionTitle} />
             </div>
         </motion.div>
