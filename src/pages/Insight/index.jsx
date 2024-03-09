@@ -10,7 +10,7 @@ import { FaPlayCircle } from "react-icons/fa";
 
 import BlogImg1 from '../../assests/images/temprary/blog1.jpg'
 import BlogImg2 from '../../assests/images/temprary/blog2.jpg'
-import TestimonialImg from '../../assests/images/temprary/testimonials.png'
+//import TestimonialImg from '../../assests/images/temprary/testimonials.png'
 
 import ImageCard from '../../components/cards/imageoverlap';
 import BlogCard2 from '../../components/cards/blog/blog2';
@@ -183,20 +183,28 @@ const Testimonials = () => {
     return (
         <section className='bg-inherit'>
             <div className="grid grid-cols-1 md:grid-cols-2">
-                <img src={TestimonialImg} alt="" />
+                <div className="overflow-hidden  flex justify-center items-center">
+                <img 
+                src="https://firebasestorage.googleapis.com/v0/b/brandladder-webapp.appspot.com/o/team%2F1706971961993.jpg?alt=media&token=905e09bf-d68a-4edb-833a-eb0ef235e3b6" 
+                alt="Brandladder"
+                loading='lazy'
+                className='h-4/5'
+                />
+                </div>
+
                 <aside className='text-black flex flex-col gap-10 my-auto md:text-left text-center px-2 '>
                     <div>
                         <h1 className='text-black text-4xl font-semibold' >Uday Kiran</h1>
                         <small>Founder of BRANDLADDER</small>
                     </div>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Meet Dr. Uday Kiran, the backbone and visionary of Brand ladder. Aceing both the fields as a doctor and as an entrepreneur, he began his journey at the age of 17. Over the past 7 years he has worked relentlessly on his skills, studying the market and gracing multiple successful ventures. With his keen observation skills he recognized the struggles of budding entrepreneurs. This lead to Brand Ladder, with the aim to drive businesses for growth and sustainability. At Brand Ladder each member is a bullet of the industry turned into working machines by him. The mission is clear and that is to empower business in every domain to achieve greater heights. With the devotion and dedication he possesses, Brand ladder is ready to make a profound impact.
                     </p>
                     <div className='flex text-left mx-auto md:mx-0'>
                         <FaPlayCircle className='my-auto mr-2 text-6xl md:text-4xl' />
                         <div className='flex flex-col'>
                             <small>Watch video</small>
-                            <small className='text-black'>Lorem Ipsum is simply dummy text of the printing and typesetting</small>
+                            <small className='text-black'>Watch Our vedio fo more info</small>
                         </div>
                     </div>
                 </aside>
