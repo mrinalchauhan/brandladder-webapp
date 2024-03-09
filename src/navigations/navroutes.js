@@ -10,6 +10,7 @@ import About from '../pages/about';
 import Contact from '../pages/contact';
 import Cart from '../pages/cart';
 import Career from '../pages/career';
+import Investment from '../pages/investment';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
 
@@ -57,6 +58,10 @@ export const UnAuthenticateRoutes = [
     {
         path: '/career',
         element: <Career />,
+    },
+    {
+        path: '/investment',
+        element: <Investment />,
     },
 ]
 

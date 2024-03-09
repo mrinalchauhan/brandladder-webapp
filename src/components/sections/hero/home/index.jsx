@@ -20,8 +20,8 @@ const HomeHeroSection = ({ currentUser }) => {
 
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-2">
-                <animated.div
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-2">
+                <animated.aside
                     className='flex flex-col my-auto'
                     ref={fadeInRightRef}
                     style={fadeInRight}
@@ -50,8 +50,8 @@ const HomeHeroSection = ({ currentUser }) => {
                         </div>
                         <small className='my-auto mx-2'>Scroll down to Explore</small>
                     </div>
-                </animated.div>
-                <animated.div
+                </animated.aside>
+                <animated.aside
                     className='mx-auto'
                     ref={fadeInLeftRef}
                     style={fadeInLeft}
@@ -63,8 +63,8 @@ const HomeHeroSection = ({ currentUser }) => {
                             className='max-h-dvh' />
 
                     </div>
-                </animated.div>
-            </div>
+                </animated.aside>
+            </section>
             <animated.div
                 className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-10 px-5'
                 ref={fadeInUpRef}

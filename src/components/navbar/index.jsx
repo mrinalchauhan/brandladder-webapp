@@ -9,16 +9,17 @@ import CartModal from '../modal/cart'
 
 import { RxAvatar } from "react-icons/rx";
 import { MdOutlineContacts, MdKeyboardArrowDown, MdOutlineEmojiEvents } from "react-icons/md";
-import { IoPricetagsOutline } from "react-icons/io5";
+import { IoPricetagsOutline, IoCaretDown, IoCaretUp } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 import { PiArrowLineLeftBold } from "react-icons/pi";
-import { FaRegBuilding } from "react-icons/fa";
+import { FaRegBuilding, FaHome } from "react-icons/fa";
 import { GrServices, GrArticle } from "react-icons/gr";
 
 import PageFlipSound from '../../assests/sound/page-flip.mp3'
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
+    const [hoverDropDown, setHoverDropDown] = useState(false)
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -53,25 +54,35 @@ const Navbar = () => {
         'navbar z-50 bg-orange-2 transition-opacity duration-300 ease-in-out';
 
     const navLinks = [
-        // {
-        //     path: '/',
-        //     title: 'Home',
-        //     icon: <FaHome />,
-        // },
+        {
+            path: '/',
+            title: 'Home',
+            icon: <FaHome />,
+        },
         {
             path: '/plans',
             title: 'Pricing',
             icon: <IoPricetagsOutline />,
         },
         {
-            path: '/services',
-            title: 'Services',
-            icon: <GrServices />,
-        },
-        {
-            path: '/events',
-            title: 'Events',
-            icon: <MdOutlineEmojiEvents />,
+            title: 'Our Offering',
+            dropdownItems: [
+                {
+                    path: '/services',
+                    title: 'Services',
+                    icon: <GrServices />,
+                },
+                {
+                    path: '/events',
+                    title: 'Events',
+                    icon: <MdOutlineEmojiEvents />,
+                },
+                {
+                    path: '/investment',
+                    title: 'Investment',
+                    icon: <MdOutlineContacts />,
+                },
+            ]
         },
         {
             path: '/insight',
@@ -112,18 +123,43 @@ const Navbar = () => {
                 {/* visible on large screens */}
                 {
                     navLinks.map((data, index) => (
-                        <Link
-                            key={index}
-                            to={data.path}
-                            className={`navbar-item text-black font-medium ${location.pathname === data.path ? 'text-orange-7' : ''} focus:text-orange-7 flex `}
-                            onClick={async () => {
-                                play();
-                                closeDrawer();
-                            }}
-                        >
-                            {data.icon && React.cloneElement(data.icon, { className: 'my-auto mx-1' })}
-                            {data.title}
-                        </Link>
+                        <div key={index}>
+                            {data.dropdownItems ? (
+                                <div className="dropdown-container justify-center dropdown-hover">
+                                    <div className="dropdown" onMouseEnter={() => { setHoverDropDown(true) }} onMouseLeave={() => { setHoverDropDown(false) }}>
+                                        <label className="my-auto flex space-x-4" tabIndex="0">
+                                            {data.icon} {data.title}
+                                            {
+                                                hoverDropDown ? (<IoCaretUp className='my-auto' />) : (<IoCaretDown className='my-auto' />)
+                                            }
+
+                                        </label>
+                                        <div className="dropdown-menu dropdown-menu-bottom-center bg-orange-2 z-50">
+                                            {data.dropdownItems.map((item, idx) => (
+                                                <Link
+                                                    key={idx}
+                                                    to={item.path}
+                                                    className="dropdown-item flex flex-row hover:bg-orange-4 hover:text-orange-1 space-x-10 z-50">
+                                                    {item.icon} {item.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link
+                                    to={data.path}
+                                    className={`navbar-item text-black font-medium ${location.pathname === data.path ? 'text-orange-7' : ''} focus:text-orange-7 flex `}
+                                    onClick={async () => {
+                                        play();
+                                        closeDrawer();
+                                    }}
+                                >
+                                    {data.icon && React.cloneElement(data.icon, { className: 'my-auto mx-1' })}
+                                    {data.title}
+                                </Link>
+                            )}
+                        </div>
                     ))
                 }
             </div>
@@ -178,18 +214,33 @@ const Navbar = () => {
                     <div className="w-100 flex flex-col justify-center align-middle overflow-scroll h-4/5">
                         {
                             navLinks.map((data, index) => (
-                                <div key={index} className="badge bg-orange-1 border-none w-100 my-3 active:text-orange-7">
-                                    <Link
-                                        to={data.path}
-                                        className={`navbar-item text-orange-7 mx-auto text-lg flex ${location.pathname === data.path ? 'text-orange-7' : ''}`}
-                                        onClick={closeDrawer}
-                                    >
-                                        {data.icon && React.cloneElement(data.icon, { className: 'my-auto mx-2' })}
-                                        {data.title}
-                                    </Link>
+                                <div key={index}>
+                                    {data.dropdownItems ? (
+                                        <div className="dropdown">
+                                            <button className="dropdown-toggle">{data.title}</button>
+                                            <div className="dropdown-menu">
+                                                {data.dropdownItems.map((item, idx) => (
+                                                    <Link key={idx} to={item.path} className="dropdown-item">{item.title}</Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            to={data.path}
+                                            className={`navbar-item text-black font-medium ${location.pathname === data.path ? 'text-orange-7' : ''} focus:text-orange-7 flex `}
+                                            onClick={async () => {
+                                                play();
+                                                closeDrawer();
+                                            }}
+                                        >
+                                            {data.icon && React.cloneElement(data.icon, { className: 'my-auto mx-1' })}
+                                            {data.title}
+                                        </Link>
+                                    )}
                                 </div>
                             ))
                         }
+
                     </div>
                 </div>
             </div>

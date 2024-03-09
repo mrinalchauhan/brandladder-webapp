@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from "react-helmet";
 
 import useSmoothScroll from '../../../../hooks/general/useSmoothScroll';
 import { useFirestore } from '../../../../context/FirestoreContext';
@@ -8,6 +7,7 @@ import { useFirestore } from '../../../../context/FirestoreContext';
 // import { CiPause1 } from "react-icons/ci";
 // import { IoPlayBackOutline, IoPlayForwardOutline } from "react-icons/io5";
 
+import HelmetComponent from '../../../../helmet';
 import Loader from '../../../../components/loader'
 import BlogCard from '../../../../components/cards/blog';
 
@@ -42,10 +42,6 @@ const Blog = () => {
 
         setReadingTime(roundedTime);
     };
-
-    // const handleToggleSound = () => {
-    //     setToggleSound(!toggleSound)
-    // }
 
     useEffect(() => {
         const fetchBlogData = async () => {
@@ -83,21 +79,18 @@ const Blog = () => {
     return (
         <section className='py-6 space-y-10'>
 
-
+            <HelmetComponent
+                title={blogId}
+                desc={blogData?.desc}
+                author={blogData?.writerName}
+                page={blogId}
+                blogKeywords={blogData?.metaTags}
+                focusKeywords={blogData?.focusKeywords && blogData.focusKeywords}
+            />
 
             {
                 blogData && (
                     <>
-                        <Helmet>
-                            <meta charset="UTF-8" />
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                            <title>BrandLadder | {blogData.blogTitle}</title>
-                            <meta name="description" content={blogData.blogDesc} />
-                            <meta name="author" content={`brandladder, Anurag Kumar, ${blogData.writerName}`} />
-                            <meta name="author" content={`${blogData.writerName}`} />
-                            <meta name="author" content="Anurag Kumar" />
-                            <meta name="keywords" content="HTML, CSS, JavaScript" />
-                        </Helmet>
                         <div className="breadcrumbs hidden md:block text-sm">
                             <ul>
                                 <li>
@@ -117,6 +110,7 @@ const Blog = () => {
                 )
             }
 
+            {/* <section className="flex"> */}
             <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 {
@@ -127,9 +121,9 @@ const Blog = () => {
                         </div>
                     ) : (
                         blogData && (
-                            <aside className="space-y-6 col-span-2">
+                            <aside className="space-y-6 col-span-2 shadow-lg">
                                 <div className="my-4">
-                                    <h1 className='text-black font-bold text-2xl md:text-5xl'>{blogData.blogTitle}</h1>
+                                    <h1 className='text-black font-bold text-xl md:text-5xl'>{blogData.blogTitle}</h1>
                                 </div>
                                 <div className="card flex flex-row space-x-4 shadow-none w-full bg-inherit">
                                     <div className='rounded-full col-span-1 max-h-16 max-w-16'>
@@ -147,13 +141,25 @@ const Blog = () => {
                                     <div className='col-span-1 mx-auto max-w-full'>
                                         <img src={blogData.titleImage} alt={blogData.blogTitle} className='w-screen h-full' />
                                     </div>
-                                    <div className="col-span-2 my-auto">
+                                    <div className="col-span-2 my-auto text-black">
                                         {blogData.blogDesc}
                                     </div>
                                 </div>
                                 <div>
-                                    <p dangerouslySetInnerHTML={{ __html: blogData.blogContent }} />
+                                    <p
+                                        className='text-black'
+                                        dangerouslySetInnerHTML={{ __html: blogData.blogContent }}
+                                    />
                                 </div>
+                                {/* {blogData.blogContent} */}
+                                {/* <iframe
+                                        title="HTML Content"
+                                        className='h-full'
+                                        style={{ border: 'none', width: '100%', overflowX: 'hidden' }}
+                                        srcDoc={htmlContentString}
+                                    /> */}
+                                {/* </div> */}
+
                                 {blogData.domain}
                                 {blogData.metaTags}
                             </aside>
@@ -183,7 +189,7 @@ const Blog = () => {
 
                     <p className="text-orange-6">Latest Blogs ... </p>
 
-                    <div className="bg-orange-2 md:p-6 rounded-xl">
+                    <div className="md:p-6 rounded-xl">
                         {
                             loading ? (
                                 <div className='space-y-6'>
@@ -191,7 +197,7 @@ const Blog = () => {
                                     <div className="skeleton-pulse w-72 h-96"></div>
                                 </div>
                             ) : (
-                                allBlogs && allBlogs.slice(0, 6).map((data) => {
+                                allBlogs && allBlogs.slice(0, 4).map((data) => {
                                     return (
                                         <BlogCard
                                             image={data.titleImage}
@@ -221,6 +227,7 @@ const Blog = () => {
                                     allBlogs && blogData &&
                                     allBlogs
                                         .filter(data => data?.writerName === blogData?.writerName)
+                                        .filter(data => data?.archive === false)
                                         .map(data => (
                                             <BlogCard
                                                 key={data.id}
@@ -228,7 +235,8 @@ const Blog = () => {
                                                 topic={data.blogTitle}
                                                 desc={data.blogDesc}
                                                 link={`/insight/${data.id}`}
-                                                domain={data.domain} />
+                                                domain={data.domain}
+                                            />
                                         ))
                                 }
                             </div>

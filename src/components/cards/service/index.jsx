@@ -15,8 +15,8 @@ const ServiceCard = ({ image, title, desc, pricing, trending = false }) => {
   const truncatedDesc = descWords.slice(0, 20).join(' ');
 
   return (
-    <div className={`card card-image-cover grid grid-rows-2 gap-2 shadow-lg p-4 ${trending ? 'bg-orange-4' : 'bg-orange-3'}`}>
-      <div className="overflow-hidden w-full h-52">
+    <div className={`card py-8 px-3 ${trending ? 'bg-orange-4' : 'bg-orange-3'}`}>
+      <div className="overflow-hidden w-full h-80" >
         <img src={image} alt={title} loading='lazy' className='h-full w-full my-auto mx-auto' />
       </div>
       <div className="card-body p-0">
@@ -32,10 +32,11 @@ const ServiceCard = ({ image, title, desc, pricing, trending = false }) => {
 
         </h2>
         <p className="text-black text-xs">
-          {truncatedDesc} <span className='link link-primary text-xs'>Read More ... </span>
+          {truncatedDesc}
+          {/* <span className='link link-primary text-xs'>Read More ... </span> */}
         </p>
         <h3>{pricing}</h3>
-        <div className="card-footer relative bottom-0">
+        <div className="card-footer">
           {
             currentUser ? (
               <label
@@ -44,7 +45,7 @@ const ServiceCard = ({ image, title, desc, pricing, trending = false }) => {
                 Get Plan
               </label>
             ) : (
-              <Link to='/signup' >
+              <Link to='/signup' className='w-full'>
                 <button
                   className="btn btn-outline bg-inherit border-orange-6 text-black shadow-md transition-all ease-in-out duration-500 hover:bg-orange-6 hover:text-orange-2 hover:shadow-2xl hover:border-orange-6 w-full">
                   SignIn To Select Plan

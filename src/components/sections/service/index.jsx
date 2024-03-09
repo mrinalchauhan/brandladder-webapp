@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import ServiceCard from '../../cards/service';
-import OutlineButton from '../../buttons/outline';
+// import OutlineButton from '../../buttons/outline';
 
 const ServiceSection = ({ serviceList, sectionTitle }) => {
     return (
@@ -10,15 +10,15 @@ const ServiceSection = ({ serviceList, sectionTitle }) => {
             {
                 serviceList !== null && (
                     <>
-                        <div className="flex flex-col md:flex-row justify-between my-3">
+                        <div className="mx-auto md:mr-auto my-10">
                             <h2 className='text-black text-3xl font-semibold' >
                                 {sectionTitle}
                             </h2>
-                            <div className='max-w-sm'>
+                            {/* <div className='max-w-sm'>
                                 <OutlineButton text='See all' />
-                            </div>
+                            </div> */}
                         </div>
-                        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
+                        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
                             {
                                 serviceList.map((data, index) => {
                                     return (
